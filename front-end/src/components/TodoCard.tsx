@@ -9,9 +9,9 @@ interface TodoCardProps {
 
 export default function TodoCard({children, handleDeleteTodo, index, handleEditTodo}: TodoCardProps) {
     return (
-        <li className='todoItem'>
+        <li>
             {children}
-            <div className='actionsContainer'>
+            <div>
                 <button onClick={() => handleEditTodo(index)}>
                     <i className="fa-solid fa-pen-to-square"></i>
                 </button>

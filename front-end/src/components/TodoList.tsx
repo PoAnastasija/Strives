@@ -1,9 +1,9 @@
 import TodoCard from './TodoCard';
 
 interface TodoListProps {
-    todos: string[]; // Array of todo items (strings)
-    handleDeleteTodo: (index: number) => void; // Function to handle deleting a todo
-    handleEditTodo: (index: number) => void; // Function to handle editing a todo
+    todos: string[];
+    handleDeleteTodo: (index: number) => void;
+    handleEditTodo: (index: number) => void;
 }
 
 export default function TodoList({ todos, handleDeleteTodo, handleEditTodo }: TodoListProps) {
