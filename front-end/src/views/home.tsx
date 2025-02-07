@@ -1,5 +1,5 @@
-import TodoInput from "../components/TodoInput";
-import TodoList from "../components/TodoList";
+import TodoInput from "../components/todo/TodoInput";
+import TodoList from "../components/todo/TodoList";
 import { useState, useEffect } from "react";
 
 function Home() {
