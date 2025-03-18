@@ -1,25 +1,38 @@
-
 interface TodoInputProps {
     handleAddTodos: (todo: string) => void;
     todoValue: string;
     setTodoValue: (value: string) => void;
-}
-
-export default function TodoInput({ handleAddTodos, todoValue, setTodoValue }: TodoInputProps) {
+  }
+  
+  export default function TodoInput({ handleAddTodos, todoValue, setTodoValue }: TodoInputProps) {
     return (
-    <header>
+      <header>
         <input
-        value={todoValue}
-        onChange={(e) => setTodoValue(e.target.value)}
-        placeholder="Enter todo..."/>
+          value={todoValue}
+          onChange={(e) => setTodoValue(e.target.value)}
+          placeholder="Enter todo..."
+        />
         <button
-        onClick={() => {
+          onClick={() => {
             handleAddTodos(todoValue);
             setTodoValue('');
-        }}
+          }}
         >
-            Add
+          Add
         </button>
-        </header>
+        <input
+          value={todoValue}
+          onChange={(e) => setTodoValue(e.target.value)}
+          placeholder="Enter todo..."
+        />
+        <button
+          onClick={() => {
+            handleAddTodos(todoValue);
+            setTodoValue('');
+          }}
+        >
+          Add
+        </button>
+      </header>
     );
-}
+  }
