@@ -1,9 +1,10 @@
-import Home from './views/home.tsx'
+import NavBar from "./components/header/navbar.tsx"
 
 function App() {
   return (
-    <Home/>
-  );
+    <div>
+      <NavBar/>
+    </div>
+  )
 }
-
-export default App;
+export default App
