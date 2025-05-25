@@ -1,45 +1,25 @@
-// import { Typography, Box } from '@mui/material';
-// import { PageLayout } from '../components/layout/PageLayout';
-// import { AvatarDisplay } from '../components/AvatarDisplay';
-// import { TaskList } from '../features/tasks/TaskList';
-// import { AddTaskModal } from '../features/tasks/AddTaskModal';
-
-// export default function Dashboard() {
-//   return (
-//     <PageLayout>
-//       <Typography variant="h4" mb={2}>Bienvenue, Helios 👋</Typography>
-
-//       <Box mt={2}>
-//         <AvatarDisplay />
-//       </Box>
-
-//       <Box mt={4}>
-//         <TaskList />
-//       </Box>
-
-//       <Box mt={2}>
-//         <AddTaskModal />
-//       </Box>
-//     </PageLayout>
-//   );
-// }
 import { Typography, Box } from '@mui/material';
 import { PageLayout } from '../components/layout/PageLayout';
 import { AvatarDisplay } from '../components/AvatarDisplay';
 import { TaskList } from '../features/tasks/TaskList';
 import { AddTaskModal } from '../features/tasks/AddTaskModal';
+import { XpProgressBar } from '../components/layout/XpProgressBar';
+import { useTaskStore } from '../features/tasks/taskSlice';
 
-type DashboardProps = {
-  toggleTheme: () => void;
-};
 
-export default function Dashboard({ toggleTheme }: DashboardProps) {
+export default function Dashboard() {
+  const { tasks } = useTaskStore();
+  const xp = tasks.filter((t) => t.done).reduce((acc, t) => acc + t.xp, 0);
+  const xpMax = 100;
+
   return (
-    <PageLayout toggleTheme={toggleTheme}>
+    <PageLayout>
       <Box mt={2}>
         <AvatarDisplay />
       </Box>
-
+      <Box mb={4}>
+        <XpProgressBar xp={xp} xpMax={xpMax} />
+      </Box>
       <Box mt={4}>
         <TaskList />
       </Box>
