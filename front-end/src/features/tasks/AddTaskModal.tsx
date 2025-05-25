@@ -1,4 +1,3 @@
-// src/features/tasks/AddTaskModal.tsx
 import {
     Button,
     Dialog,
@@ -16,9 +15,7 @@ import {
     const [title, setTitle] = useState('');
     const [type, setType] = useState<'daily' | 'habit' | 'todo'>('daily');
     const [xp, setXp] = useState(5);
-  
     const { addTask } = useTaskStore();
-  
     const handleSubmit = () => {
       addTask({ id: crypto.randomUUID(), title, type, xp, done: false });
       setOpen(false);

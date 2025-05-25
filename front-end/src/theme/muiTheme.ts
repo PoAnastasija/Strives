@@ -10,7 +10,7 @@ export const muiTheme = createTheme({
       main: '#ffcd29',
     },
     background: {
-      default: '#f7f6fc',
+      default: '#fcfbfe',
       paper: '#ffffff',
     },
     text: {
