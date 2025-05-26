@@ -24,10 +24,8 @@ export default function Dashboard() {
     <PageLayout>
       <Box className={styles.dashboardContainer}>
         <Box className={styles.header}>
-          <Typography variant="h4" mb={0.5}>
-            Hello !
-          </Typography>
-          <Typography variant="body1">Prêt à gagner de l’XP ?</Typography>
+          <h1>Hello !</h1>
+          <p>Prêt à gagner de l’XP ?</p>
         </Box>
         <Grid container spacing={5} justifyContent="center">
           <Grid item xs={12} md={4}>

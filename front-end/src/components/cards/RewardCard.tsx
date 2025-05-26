@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Box, Button } from '@mui/material';
+import { Card, CardContent, Box, Button } from '@mui/material';
 import RedeemIcon from '@mui/icons-material/Redeem';
 import styles from './RewardCard.module.css';
 
@@ -20,12 +20,8 @@ export const RewardCard = ({ title, cost, onClaim, disabled }: RewardCardProps) 
             fontSize="large"
             sx={{ fontSize: 40, color: disabled ? 'grey' : '#7b61ff' }}
           />
-          <Typography variant="h6" fontWeight="bold">
-            {title}
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Coût : {cost} 🪙
-          </Typography>
+          <h2 className="rewardTitle">{title}</h2>
+          <p className="rewardCost">Coût : {cost} 🪙</p>
           <Button
             variant="contained"
             size="medium"

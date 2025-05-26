@@ -1,6 +1,7 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { useTaskStore } from './taskSlice';
 import { TaskCard } from '@components/cards/TaskCard';
+import styles from './TaskList.module.css';
 
 export const TaskList = () => {
   const { tasks, toggleTask } = useTaskStore();
@@ -9,8 +10,8 @@ export const TaskList = () => {
 
   return (
     <Box>
-      <Typography variant="h6" mb={2}>Tâches du jour</Typography>
-      {tasks.length === 0 && <Typography>Aucune tâche à afficher.</Typography>}
+      <h2 className={styles.taskListTitle}>Tâches du jour</h2>
+      {tasks.length === 0 && <p className="taskListEmpty">Aucune tâche à afficher.</p>}
       {tasks.map((task) => (
         <TaskCard key={task.id} task={task} onToggle={toggleTask} />
       ))}

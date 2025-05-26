@@ -1,0 +1,12 @@
+.taskListTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+  
+  .taskListEmpty {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 0.5rem;
+  }
+  

@@ -20,4 +20,15 @@
   .icon {
     font-size: 2rem;
   }
+
+.title {
+    font-size: 0.875rem;
+    color: #666;
+    margin: 0;
+  }
   
+  .value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+  }

@@ -1,4 +1,4 @@
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, Box } from '@mui/material';
 import { ReactNode } from 'react';
 import styles from './StatCard.module.css';
 
@@ -14,12 +14,8 @@ export const StatCard = ({ title, value, icon }: StatCardProps) => (
       <Box className={styles.inner}>
         {icon && <Box className={styles.icon}>{icon}</Box>}
         <Box>
-          <Typography variant="subtitle2" color="text.secondary">
-            {title}
-          </Typography>
-          <Typography variant="h5" fontWeight="bold">
-            {value}
-          </Typography>
+          <p className={styles.title}>{title}</p>
+          <h2 className={styles.value}>{value}</h2>
         </Box>
       </Box>
     </CardContent>

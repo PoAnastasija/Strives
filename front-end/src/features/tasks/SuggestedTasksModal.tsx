@@ -95,7 +95,7 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
               {suggestions[category].map((task) => (
                 <Grid item xs={12} sm={6} key={task}>
                   <Paper className={styles.suggestionCard} onClick={() => handleAdd(task)}>
-                    <Typography>{task}</Typography>
+                    <p className={styles.taskText}>{task}</p>
                   </Paper>
                 </Grid>
               ))}

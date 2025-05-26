@@ -1,28 +1,39 @@
 .dashboardContainer {
     padding-left: 1rem;
     padding-right: 1rem;
-  }
+}
   
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
     .dashboardContainer {
       padding-left: 2rem;
       padding-right: 2rem;
     }
-  }
+}
   
-  .header {
+.header {
     margin-top: 1rem;
     margin-bottom: 2rem;
-  }
+}
   
-  .columnLayout {
+.columnLayout {
     display: flex;
     flex-direction: column;
     gap: 3rem;
-  }
+}
   
-  .addButton {
+.addButton {
     text-transform: none;
     margin-top: 1.5rem;
-  }
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
   
+p {
+    font-size: 1rem;
+    color: #333;
+}
+    

@@ -1,7 +1,7 @@
 .card {
     border-radius: 12px;
     min-height: 100px;
-    min-width: 200px;
+    max-width: 450px;
     padding: 16px;
     display: flex;
     align-items: center;
@@ -32,5 +32,17 @@
   .claimButton {
     text-transform: none;
     margin-top: 0.5rem;
+  }
+
+  .rewardTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .rewardCost {
+    font-size: 1rem;
+    color: #666;
+    margin: 0;
   }
   

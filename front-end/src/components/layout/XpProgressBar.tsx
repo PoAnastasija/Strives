@@ -1,4 +1,4 @@
-import { Typography, Box, LinearProgress } from '@mui/material';
+import { Box, LinearProgress } from '@mui/material';
 import styles from './XpProgressBar.module.css';
 
 type XpBarProps = {
@@ -12,8 +12,8 @@ export const XpProgressBar = ({ xp, xpMax }: XpBarProps) => {
   return (
     <Box className={styles.wrapper}>
       <Box className={styles.header}>
-        <Typography variant="body2">Progression XP</Typography>
-        <Typography variant="body2">{xp} / {xpMax}</Typography>
+        <span className={styles.label}>Progression XP</span>
+        <span className={styles.label}>{xp} / {xpMax}</span>
       </Box>
       <LinearProgress
         variant="determinate"
