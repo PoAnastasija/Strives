@@ -7,11 +7,11 @@ export type Task = {
   xp: number;
   done: boolean;
 };
-
 type TaskStore = {
   tasks: Task[];
   toggleTask: (id: string) => void;
   addTask: (task: Task) => void;
+  deleteTask: (id: string) => void;
 };
 
 export const useTaskStore = create<TaskStore>((set) => ({
@@ -29,4 +29,8 @@ export const useTaskStore = create<TaskStore>((set) => ({
     set((state) => ({
       tasks: [...state.tasks, task],
     })),
+    deleteTask: (id) =>
+      set((state) => ({
+        tasks: state.tasks.filter((task) => task.id !== id),
+      })),
 }));

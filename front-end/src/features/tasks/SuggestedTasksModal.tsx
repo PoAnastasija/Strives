@@ -1,13 +1,14 @@
-import { Box, Button, Dialog, DialogTitle, DialogContent, Typography, Grid, Tabs, Tab,
+import { Box, Button, Dialog, DialogTitle, DialogContent, Grid, Tabs, Tab,
   Paper, TextField, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { useTaskStore } from './taskSlice';
 import styles from './SuggestedTasksModal.module.css';
 
 const suggestions = {
-  sport: ['Faire du sport', 'Marcher 5k pas', 'Faire 15 pompes'],
-  travail: ['Avancer le projet', 'Répondre aux mails', 'Faire une réunion'],
-  alimentation: ['Boire 2L d’eau', 'Manger un fruit', 'Préparer un repas sain'],
+  sport: ['🤸 Pause étirement', '🚶 Marcher dehors 15 min', '🏃 Courir 15 min', '🧘 Méditer 10 min'],
+  travail: ['⏳ Faire 45 de deep work', '🧹 Ranger pendant 15 min', '⭐ Commencer avec la tâche la plus importante'],
+  alimentation: ['🚰 Boire 2L d’eau', '🍏 Manger un fruit', '🍩 Ne pas manger de sucre raffiné',
+     '🍵 Boire du thé', '📴 Manger sans distractions'],
 };
 
 type Category = 'sport' | 'travail' | 'alimentation' | 'custom';
@@ -52,7 +53,7 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
       <DialogTitle>Ajouter une tâche</DialogTitle>
       <DialogContent>
         <Tabs value={category} onChange={(_, val) => setCategory(val)} centered>
-          <Tab label="🏋️ Sport" value="sport" />
+          <Tab label="🏋️ Sport/Bien être" value="sport" />
           <Tab label="💼 Travail" value="travail" />
           <Tab label="🍎 Alimentation" value="alimentation" />
           <Tab label="🛠️ Custom" value="custom" />

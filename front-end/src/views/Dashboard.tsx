@@ -9,7 +9,7 @@ import { SuggestedTasksModal } from '@features/tasks/SuggestedTasksModal';
 import { useTaskStore } from '@features/tasks/taskSlice';
 import styles from './Dashboard.module.css';
 import { useUserXp } from '@hooks/useUserXp';
-import { Task } from '@types/task';
+import { Task } from '@features/tasks/taskSlice';
 
 export default function Dashboard() {
   const { tasks } = useTaskStore();

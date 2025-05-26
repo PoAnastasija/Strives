@@ -4,7 +4,6 @@ import FlagIcon from '@mui/icons-material/Flag';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import styles from './Sidebar.module.css';
 
-const drawerWidth = 200;
 
 export const Sidebar = () => {
   return (
