@@ -1,0 +1,23 @@
+.card {
+    border-radius: 12px;
+    min-width: 200px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .content {
+    padding: 0;
+  }
+  
+  .inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .icon {
+    font-size: 2rem;
+  }
+  

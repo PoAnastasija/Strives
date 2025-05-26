@@ -1,0 +1,16 @@
+.customForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .suggestionCard {
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .suggestionCard:hover {
+    background-color: #e0e5ff;
+  }
+  

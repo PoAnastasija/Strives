@@ -1,19 +1,8 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  Typography,
-  Grid,
-  Tabs,
-  Tab,
-  Paper,
-  TextField,
-  MenuItem,
-} from '@mui/material';
+import { Box, Button, Dialog, DialogTitle, DialogContent, Typography, Grid, Tabs, Tab,
+  Paper, TextField, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { useTaskStore } from './taskSlice';
+import styles from './SuggestedTasksModal.module.css';
 
 const suggestions = {
   sport: ['Faire du sport', 'Marcher 5k pas', 'Faire 15 pompes'],
@@ -23,27 +12,26 @@ const suggestions = {
 
 type Category = 'sport' | 'travail' | 'alimentation' | 'custom';
 
-export const SuggestedTasksModal = ({
-  open,
-  onClose,
-}: {
+type SuggestedTasksModalProps = {
   open: boolean;
   onClose: () => void;
-}) => {
+};
+
+export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps) => {
   const [category, setCategory] = useState<Category>('sport');
   const { addTask } = useTaskStore();
   const [customTitle, setCustomTitle] = useState('');
   const [customXp, setCustomXp] = useState(10);
   const [customType, setCustomType] = useState<'sport' | 'travail' | 'alimentation'>('sport');
+
   const handleAdd = (title: string, type: Category = category) => {
-    const newTask = {
+    addTask({
       id: crypto.randomUUID(),
       title,
       type: type as 'sport' | 'travail' | 'alimentation',
       xp: 10,
       done: false,
-    };
-    addTask(newTask);
+    });
     onClose();
   };
 
@@ -72,7 +60,7 @@ export const SuggestedTasksModal = ({
 
         <Box mt={2}>
           {category === 'custom' ? (
-            <Box display="flex" flexDirection="column" gap={2}>
+            <Box className={styles.customForm}>
               <TextField
                 label="Nom de la tâche"
                 value={customTitle}
@@ -106,14 +94,7 @@ export const SuggestedTasksModal = ({
             <Grid container spacing={2}>
               {suggestions[category].map((task) => (
                 <Grid item xs={12} sm={6} key={task}>
-                  <Paper
-                    sx={{
-                      p: 2,
-                      cursor: 'pointer',
-                      '&:hover': { backgroundColor: 'primary.light' },
-                    }}
-                    onClick={() => handleAdd(task)}
-                  >
+                  <Paper className={styles.suggestionCard} onClick={() => handleAdd(task)}>
                     <Typography>{task}</Typography>
                   </Paper>
                 </Grid>

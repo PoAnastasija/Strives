@@ -1,33 +1,17 @@
 import { XpProgressBar } from '../layout/XpProgressBar';
 import monsterImg from '../../assets/man.png';
-import { Paper, Box } from '@mui/material';
+import styles from './CompanionCard.module.css';
 
-
-type Props = {
+interface CompanionCardProps {
   xp: number;
   xpMax: number;
-};
+}
 
-export const CompanionCard = ({ xp, xpMax }: Props) => {
+export const CompanionCard = ({ xp, xpMax }: CompanionCardProps) => {
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        p: 3,
-        borderRadius: 4,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: 280,
-      }}
-    >
-      <Box
-        component="img"
-        src={monsterImg}
-        alt="Ton compagnon"
-        sx={{ width: 120, height: 120, mb: 2 }}
-      />
+    <div className={styles.card}>
+      <img src={monsterImg} alt="Ton compagnon" className={styles.image} />
       <XpProgressBar xp={xp} xpMax={xpMax} />
-    </Paper>
+    </div>
   );
 };

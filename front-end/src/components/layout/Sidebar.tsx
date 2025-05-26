@@ -1,7 +1,8 @@
 import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import StorefrontIcon from '@mui/icons-material/Storefront';
-import FlagIcon from '@mui/icons-material/Flag';
 import HomeIcon from '@mui/icons-material/Home';
+import FlagIcon from '@mui/icons-material/Flag';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import styles from './Sidebar.module.css';
 
 const drawerWidth = 200;
 
@@ -9,14 +10,8 @@ export const Sidebar = () => {
   return (
     <Drawer
       variant="permanent"
-      sx={{
-        width: drawerWidth,
-        [`& .MuiDrawer-paper`]: {
-          width: drawerWidth,
-          boxSizing: 'border-box',
-          backgroundColor: '#f4f5fa',
-        },
-      }}
+      className={styles.sidebar}
+      classes={{ paper: styles.sidebarPaper }}
     >
       <List>
         <ListItem button>
@@ -35,3 +30,4 @@ export const Sidebar = () => {
     </Drawer>
   );
 };
+

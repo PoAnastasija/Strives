@@ -1,0 +1,10 @@
+.sidebar {
+    width: 200px;
+  }
+  
+  .sidebarPaper {
+    width: 200px;
+    box-sizing: border-box;
+    background-color: #f4f5fa;
+  }
+  

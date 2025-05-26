@@ -1,5 +1,7 @@
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import RedeemIcon from '@mui/icons-material/Redeem';
+import styles from './RewardCard.module.css';
+import clsx from 'clsx';
 
 type RewardCardProps = {
   title: string;
@@ -12,23 +14,16 @@ export const RewardCard = ({ title, cost, onClaim, disabled }: RewardCardProps) 
   return (
     <Card
       elevation={3}
-      sx={{
-        borderRadius: 3,
-        minHeight: 100,
-        minWidth: 200,
-        backgroundColor: disabled ? 'grey.100' : 'background.paper',
-        opacity: disabled ? 0.6 : 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        p: 2,
-      }}
+      className={clsx(
+        styles.card,
+        disabled ? styles.disabledCard : styles.enabledCard
+      )}
     >
-      <CardContent sx={{ textAlign: 'center' }}>
-        <Box display="flex" flexDirection="column" alignItems="center" gap={1.5}>
+      <CardContent className={styles.content}>
+        <Box className={styles.contentBox}>
           <RedeemIcon
             fontSize="large"
-            sx={{ fontSize: 40, color: disabled ? 'text.disabled' : 'primary.main' }}
+            sx={{ fontSize: 40, color: disabled ? 'grey' : '#7b61ff' }}
           />
           <Typography variant="h6" fontWeight="bold">
             {title}
@@ -41,7 +36,7 @@ export const RewardCard = ({ title, cost, onClaim, disabled }: RewardCardProps) 
             size="medium"
             onClick={onClaim}
             disabled={disabled}
-            sx={{ textTransform: 'none', mt: 1 }}
+            className={styles.claimButton}
           >
             Réclamer
           </Button>

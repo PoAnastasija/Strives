@@ -1,0 +1,28 @@
+.dashboardContainer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .dashboardContainer {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  .header {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .columnLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .addButton {
+    text-transform: none;
+    margin-top: 1.5rem;
+  }
+  

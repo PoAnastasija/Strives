@@ -1,23 +1,14 @@
 import { AppBar, Toolbar, Typography, Avatar } from '@mui/material';
+import styles from './AppBar.module.css';
 
 export const TopAppBar = () => {
   return (
     <AppBar position="static" color="primary">
       <Toolbar>
-        <Typography
-          variant="h5"
-          sx={{
-            flexGrow: 1,
-            fontWeight: 600,
-            color: 'white',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 1,
-          }}
-        >
+        <Typography variant="h5" className={styles.title}>
           Strives
         </Typography>
-        <Avatar alt="User" sx={{ ml: 2 }} />
+        <Avatar alt="User" className={styles.avatar} />
       </Toolbar>
     </AppBar>
   );

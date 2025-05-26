@@ -2,27 +2,20 @@ import { Box, CssBaseline } from '@mui/material';
 import { TopAppBar } from './AppBar';
 import { Sidebar } from './Sidebar';
 import { ReactNode } from 'react';
+import styles from './PageLayout.module.css';
 
-type Props = {
+type PageLayoutProps = {
   children: ReactNode;
 };
 
-export const PageLayout = ({ children }: Props) => {
+export const PageLayout = ({ children }: PageLayoutProps) => {
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box className={styles.wrapper}>
       <CssBaseline />
       <Sidebar />
-      <Box sx={{ flexGrow: 1 }}>
+      <Box className={styles.mainWrapper}>
         <TopAppBar />
-        <Box
-          component="main"
-          sx={{
-            bgcolor: 'background.default',
-            minHeight: '100vh',
-            pt: '40px',
-            px: 12,
-          }}
-        >
+        <Box className={styles.mainContent}>
           {children}
         </Box>
       </Box>

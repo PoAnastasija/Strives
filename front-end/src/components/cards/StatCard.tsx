@@ -1,27 +1,18 @@
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import { ReactNode } from 'react';
+import styles from './StatCard.module.css';
 
-type StatCardProps = {
+interface StatCardProps {
   title: string;
   value: string | number;
   icon?: ReactNode;
-};
+}
 
 export const StatCard = ({ title, value, icon }: StatCardProps) => (
-  <Card
-    elevation={2}
-    sx={{
-      borderRadius: 3,
-      minWidth: 200,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      p: 2,
-    }}
-  >
-    <CardContent sx={{ p: 0 }}>
-      <Box display="flex" alignItems="center" gap={2}>
-        {icon && <Box fontSize="2rem">{icon}</Box>}
+  <Card elevation={2} className={styles.card}>
+    <CardContent className={styles.content}>
+      <Box className={styles.inner}>
+        {icon && <Box className={styles.icon}>{icon}</Box>}
         <Box>
           <Typography variant="subtitle2" color="text.secondary">
             {title}

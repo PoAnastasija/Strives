@@ -7,6 +7,7 @@ import { TaskList } from '../features/tasks/TaskList';
 import { SuggestedTasksModal } from '../features/tasks/SuggestedTasksModal';
 import { StatCard } from '../components/cards/StatCard';
 import { RewardCard } from '../components/cards/RewardCard';
+import styles from './Dashboard.module.css';
 
 export default function Dashboard() {
   const { tasks } = useTaskStore();
@@ -21,8 +22,8 @@ export default function Dashboard() {
 
   return (
     <PageLayout>
-      <Box px={{ xs: 1, md: 2, lg: 2 }}>
-        <Box mt={1} mb={2}>
+      <Box className={styles.dashboardContainer}>
+        <Box className={styles.header}>
           <Typography variant="h4" mb={0.5}>
             Hello !
           </Typography>
@@ -30,19 +31,17 @@ export default function Dashboard() {
         </Box>
         <Grid container spacing={5} justifyContent="center">
           <Grid item xs={12} md={4}>
-            <Box display="flex" flexDirection="column" gap={3}>
+            <Box className={styles.columnLayout}>
               <CompanionCard xp={xp} xpMax={xpMax} />
               <Box>
                 <TaskList />
-                <Box mt={1.5}>
-                  <Button
-                    variant="contained"
-                    onClick={() => setOpenModal(true)}
-                    sx={{ textTransform: 'none' }}
-                  >
-                    Ajouter une tâche
-                  </Button>
-                </Box>
+                <Button
+                  variant="contained"
+                  onClick={() => setOpenModal(true)}
+                  className={styles.addButton}
+                >
+                  Ajouter une tâche
+                </Button>
               </Box>
             </Box>
           </Grid>
@@ -51,7 +50,7 @@ export default function Dashboard() {
               <Grid item>
                 <Grid container spacing={3}>
                   <Grid item xs={6} md={4}>
-                  <StatCard title="Niveau" value={`${level} 👑`} />
+                    <StatCard title="Niveau" value={`${level} 👑`} />
                   </Grid>
                   <Grid item xs={6} md={4}>
                     <StatCard title="Pièces" value={`${gold} 🪙`} />
