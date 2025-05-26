@@ -8,11 +8,12 @@ import { TaskList } from '@features/tasks/TaskList';
 import { SuggestedTasksModal } from '@features/tasks/SuggestedTasksModal';
 import { useTaskStore } from '@features/tasks/taskSlice';
 import styles from './Dashboard.module.css';
+import { useUserXp } from '@hooks/useUserXp';
 import { Task } from '@types/task';
 
 export default function Dashboard() {
   const { tasks } = useTaskStore();
-  const xp = tasks.filter((t: Task) => t.done).reduce((acc, t) => acc + t.xp, 0);
+  const xp = useUserXp();
   const xpMax = 300;
   const level = Math.floor(xp / xpMax) + 1;
   const gold = tasks.filter((t: Task) => t.done).reduce((acc, t) => acc + Math.floor(t.xp / 2), 0);
