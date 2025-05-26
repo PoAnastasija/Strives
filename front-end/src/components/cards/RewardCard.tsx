@@ -1,7 +1,6 @@
 import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import RedeemIcon from '@mui/icons-material/Redeem';
 import styles from './RewardCard.module.css';
-import clsx from 'clsx';
 
 type RewardCardProps = {
   title: string;
@@ -11,14 +10,10 @@ type RewardCardProps = {
 };
 
 export const RewardCard = ({ title, cost, onClaim, disabled }: RewardCardProps) => {
+  const cardClass = `${styles.card} ${disabled ? styles.disabledCard : styles.enabledCard}`;
+
   return (
-    <Card
-      elevation={3}
-      className={clsx(
-        styles.card,
-        disabled ? styles.disabledCard : styles.enabledCard
-      )}
-    >
+    <Card elevation={3} className={cardClass}>
       <CardContent className={styles.content}>
         <Box className={styles.contentBox}>
           <RedeemIcon

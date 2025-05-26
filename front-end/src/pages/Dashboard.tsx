@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Typography, Box, Button, Grid } from '@mui/material';
-import { PageLayout } from '../components/layout/PageLayout';
-import { useTaskStore } from '../features/tasks/taskSlice';
-import { CompanionCard } from '../components/cards/CompanionCard';
-import { TaskList } from '../features/tasks/TaskList';
-import { SuggestedTasksModal } from '../features/tasks/SuggestedTasksModal';
-import { StatCard } from '../components/cards/StatCard';
-import { RewardCard } from '../components/cards/RewardCard';
+import { PageLayout } from '@components/layout/PageLayout';
+import { CompanionCard } from '@components/cards/CompanionCard';
+import { StatCard } from '@components/cards/StatCard';
+import { RewardCard } from '@components/cards/RewardCard';
+import { TaskList } from '@features/tasks/TaskList';
+import { SuggestedTasksModal } from '@features/tasks/SuggestedTasksModal';
+import { useTaskStore } from '@features/tasks/taskSlice';
 import styles from './Dashboard.module.css';
 
 export default function Dashboard() {

@@ -1,5 +1,5 @@
 import { Card, CardContent, Checkbox, FormControlLabel, Typography } from '@mui/material';
-import { Task } from '../../features/tasks/taskSlice';
+import { Task } from '@features/tasks/taskSlice'
 import styles from './TaskCard.module.css';
 
 interface TaskCardProps {

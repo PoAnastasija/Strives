@@ -1,5 +1,5 @@
-import { XpProgressBar } from '../layout/XpProgressBar';
-import monsterImg from '../../assets/man.png';
+import { XpProgressBar } from '@components/layout/XpProgressBar';
+import monsterImg from '@assets/man.png';
 import styles from './CompanionCard.module.css';
 
 interface CompanionCardProps {

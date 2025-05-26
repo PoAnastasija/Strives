@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { useTaskStore } from './taskSlice';
-import { TaskCard } from '../../components/cards/TaskCard';
+import { TaskCard } from '@components/cards/TaskCard';
 
 export const TaskList = () => {
   const { tasks, toggleTask } = useTaskStore();
