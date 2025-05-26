@@ -2,8 +2,10 @@ import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/materia
 import HomeIcon from '@mui/icons-material/Home';
 import FlagIcon from '@mui/icons-material/Flag';
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import ComputerIcon from '@mui/icons-material/Computer';
 import styles from './Sidebar.module.css';
-
+import { Link } from 'react-router-dom';
 
 export const Sidebar = () => {
   return (
@@ -13,7 +15,7 @@ export const Sidebar = () => {
       classes={{ paper: styles.sidebarPaper }}
     >
       <List>
-        <ListItem button>
+        <ListItem button component={Link} to="/">
           <ListItemIcon><HomeIcon /></ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
@@ -21,12 +23,21 @@ export const Sidebar = () => {
           <ListItemIcon><FlagIcon /></ListItemIcon>
           <ListItemText primary="Quests" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component={Link} to="/shop">
           <ListItemIcon><StorefrontIcon /></ListItemIcon>
           <ListItemText primary="Shop" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon><AccessTimeIcon /></ListItemIcon>
+          <ListItemText primary="Focus" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon><ComputerIcon /></ListItemIcon>
+          <ListItemText primary="Projects" />
         </ListItem>
       </List>
     </Drawer>
   );
 };
+
 

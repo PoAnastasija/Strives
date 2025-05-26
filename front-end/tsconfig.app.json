@@ -24,6 +24,7 @@
       "@assets/*": ["assets/*"],
       "@types/*": ["types/*"],
       "@hooks/*": ["hooks/*"],
+      "@views/*": ["views/*"],
     }
   },
   "include": ["src"]
