@@ -1,12 +1,4 @@
-import {
-    Button,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    TextField,
-    MenuItem,
-    DialogActions,
-  } from '@mui/material';
+import { Button, Dialog, DialogTitle, DialogContent, TextField, MenuItem, DialogActions } from '@mui/material';
   import { useState } from 'react';
   import { useTaskStore } from './taskSlice';
   
@@ -25,10 +17,10 @@ import {
     return (
       <>
         <Button variant="contained" onClick={() => setOpen(true)}>
-          Ajouter une tâche
+          Add a task
         </Button>
         <Dialog open={open} onClose={() => setOpen(false)}>
-          <DialogTitle>Nouvelle tâche</DialogTitle>
+          <DialogTitle>New task</DialogTitle>
           <DialogContent>
             <TextField
               fullWidth
@@ -45,9 +37,9 @@ import {
               onChange={(e) => setType(e.target.value as any)}
               margin="normal"
             >
-              <MenuItem value="daily">Quotidienne</MenuItem>
-              <MenuItem value="habit">Habitude</MenuItem>
-              <MenuItem value="todo">À faire</MenuItem>
+              <MenuItem value="daily">Daily</MenuItem>
+              <MenuItem value="habit">Habit</MenuItem>
+              <MenuItem value="todo">To-do</MenuItem>
             </TextField>
             <TextField
               fullWidth
@@ -59,8 +51,8 @@ import {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setOpen(false)}>Annuler</Button>
-            <Button onClick={handleSubmit} variant="contained">Ajouter</Button>
+            <Button onClick={() => setOpen(false)}>Reset</Button>
+            <Button onClick={handleSubmit} variant="contained">Add</Button>
           </DialogActions>
         </Dialog>
       </>

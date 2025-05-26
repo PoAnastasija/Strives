@@ -27,7 +27,7 @@ export default function Dashboard() {
       <Box className={styles.dashboardContainer}>
         <Box className={styles.header}>
           <h1>Hello !</h1>
-          <p>Prêt à gagner de l’XP ?</p>
+          <p>Ready to earn XP ?</p>
         </Box>
         <Grid container spacing={5} justifyContent="center">
           <Grid item xs={12} md={4}>
@@ -40,7 +40,7 @@ export default function Dashboard() {
                   onClick={() => setOpenModal(true)}
                   className={styles.addButton}
                 >
-                  Ajouter une tâche
+                  Add a task
                 </Button>
               </Box>
             </Box>
@@ -50,10 +50,10 @@ export default function Dashboard() {
               <Grid item>
                 <Grid container spacing={3}>
                   <Grid item xs={6} md={4}>
-                    <StatCard title="Niveau" value={`${level} 👑`} />
+                    <StatCard title="Levels" value={`${level} 👑`} />
                   </Grid>
                   <Grid item xs={6} md={4}>
-                    <StatCard title="Pièces" value={`${gold} 🪙`} />
+                    <StatCard title="Money" value={`${gold} 🪙`} />
                   </Grid>
                 </Grid>
               </Grid>

@@ -4,31 +4,46 @@ import { RewardCard } from '@components/cards/RewardCard';
 import { useRewardStore } from '@features/rewards/rewardSlice';
 import { useState } from 'react';
 import { AddRewardModal } from '@features/rewards/AddRewardModal';
+import { useTaskStore } from '@features/tasks/taskSlice';
 
 export default function Shop() {
   const { rewards } = useRewardStore();
+  const { gold, spendGold } = useTaskStore();
   const [open, setOpen] = useState(false);
+
+  const handleClaimReward = (reward) => {
+    if (gold < reward.cost) {
+      alert("❌ Pas assez de pièces !");
+      return;
+    }
+    spendGold(reward.cost);
+    alert(`✅ Récompense "${reward.title}" réclamée !`);
+  };
 
   return (
     <PageLayout>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <h1>🏪 Boutique</h1>
+        <h1>🏪 Shop</h1>
+        <div>💰 Or : {gold}</div>
         <Button variant="contained" onClick={() => setOpen(true)}>
-          Ajouter une récompense
+          Add a reward
         </Button>
       </Box>
+
       <Grid container spacing={3} mt={2}>
         {rewards.map((reward) => (
           <Grid item xs={12} sm={6} md={4} key={reward.id}>
             <RewardCard
               title={reward.title}
               cost={reward.cost}
-              onClaim={() => alert(`Récompense "${reward.title}" réclamée !`)}
-              disabled={false}
+              link={reward.link}
+              onClaim={() => handleClaimReward(reward)}
+              disabled={gold < reward.cost} // 👈 désactivé si trop cher
             />
           </Grid>
         ))}
       </Grid>
+
       <AddRewardModal open={open} onClose={() => setOpen(false)} />
     </PageLayout>
   );

@@ -8,8 +8,8 @@ export const TaskList = () => {
 
   return (
     <Box>
-      <h2 className={styles.title}>Tâches du jour</h2>
-      {tasks.length === 0 && <p className={styles.empty}>Aucune tâche à afficher.</p>}
+      <h2 className={styles.title}>Today's tasks</h2>
+      {tasks.length === 0 && <p className={styles.empty}>There is no tasks to display.</p>}
       {tasks.map((task) => (
         <TaskCard
           key={task.id}

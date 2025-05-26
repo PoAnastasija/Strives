@@ -5,13 +5,13 @@ import { useTaskStore } from './taskSlice';
 import styles from './SuggestedTasksModal.module.css';
 
 const suggestions = {
-  sport: ['🤸 Pause étirement', '🚶 Marcher dehors 15 min', '🏃 Courir 15 min', '🧘 Méditer 10 min'],
-  travail: ['⏳ Faire 45 de deep work', '🧹 Ranger pendant 15 min', '⭐ Commencer avec la tâche la plus importante'],
-  alimentation: ['🚰 Boire 2L d’eau', '🍏 Manger un fruit', '🍩 Ne pas manger de sucre raffiné',
-     '🍵 Boire du thé', '📴 Manger sans distractions'],
+  Movement: ['🤸 Take a stretch break', '🚶 Go for a 15 min walk', '🏃 Run for 15 min', '🧘 Meditate for 10 min'],
+  work: ['⏳ Do 45 min of deep work', '🧹 Clean for 15 min', '⭐ Start with the most important task'],
+  nutrition: ['🚰 Drink 2L of water', '🍏 Eat a fruit', '🍩 Don’t eat processed sugar',
+     '🍵 Drink tea', '📴 Eat without distractions'],
 };
 
-type Category = 'sport' | 'travail' | 'alimentation' | 'custom';
+type Category = 'Movement' | 'work' | 'nutrition' | 'custom';
 
 type SuggestedTasksModalProps = {
   open: boolean;
@@ -19,17 +19,17 @@ type SuggestedTasksModalProps = {
 };
 
 export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps) => {
-  const [category, setCategory] = useState<Category>('sport');
+  const [category, setCategory] = useState<Category>('Movement');
   const { addTask } = useTaskStore();
   const [customTitle, setCustomTitle] = useState('');
   const [customXp, setCustomXp] = useState(10);
-  const [customType, setCustomType] = useState<'sport' | 'travail' | 'alimentation'>('sport');
+  const [customType, setCustomType] = useState<'Movement' | 'work' | 'nutrition'>('Movement');
 
   const handleAdd = (title: string, type: Category = category) => {
     addTask({
       id: crypto.randomUUID(),
       title,
-      type: type as 'sport' | 'travail' | 'alimentation',
+      type: type as 'Movement' | 'work' | 'nutrition',
       xp: 10,
       done: false,
     });
@@ -50,12 +50,12 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth>
-      <DialogTitle>Ajouter une tâche</DialogTitle>
+      <DialogTitle>Add a task</DialogTitle>
       <DialogContent>
         <Tabs value={category} onChange={(_, val) => setCategory(val)} centered>
-          <Tab label="🏋️ Sport/Bien être" value="sport" />
-          <Tab label="💼 Travail" value="travail" />
-          <Tab label="🍎 Alimentation" value="alimentation" />
+          <Tab label="🏋️ Movement" value="Movement" />
+          <Tab label="💼 Work" value="work" />
+          <Tab label="🍎 Nutrition" value="nutrition" />
           <Tab label="🛠️ Custom" value="custom" />
         </Tabs>
 
@@ -63,7 +63,7 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
           {category === 'custom' ? (
             <Box className={styles.customForm}>
               <TextField
-                label="Nom de la tâche"
+                label="Task's name"
                 value={customTitle}
                 onChange={(e) => setCustomTitle(e.target.value)}
                 fullWidth
@@ -78,17 +78,17 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
               />
               <TextField
                 select
-                label="Catégorie"
+                label="Category"
                 value={customType}
                 onChange={(e) => setCustomType(e.target.value as any)}
                 fullWidth
               >
-                <MenuItem value="sport">Sport</MenuItem>
-                <MenuItem value="travail">Travail</MenuItem>
-                <MenuItem value="alimentation">Alimentation</MenuItem>
+                <MenuItem value="Movement">Movement</MenuItem>
+                <MenuItem value="work">Work</MenuItem>
+                <MenuItem value="nutrition">Nutrition</MenuItem>
               </TextField>
               <Button onClick={handleAddCustom} variant="contained">
-                Ajouter
+                Add
               </Button>
             </Box>
           ) : (

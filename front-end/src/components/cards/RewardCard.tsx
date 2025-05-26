@@ -5,23 +5,31 @@ import styles from './RewardCard.module.css';
 type RewardCardProps = {
   title: string;
   cost: number;
+  link?: string;
   onClaim: () => void;
   disabled?: boolean;
 };
 
-export const RewardCard = ({ title, cost, onClaim, disabled }: RewardCardProps) => {
+export const RewardCard = ({ title, cost, link, onClaim, disabled }: RewardCardProps) => {
   const cardClass = `${styles.card} ${disabled ? styles.disabledCard : styles.enabledCard}`;
 
   return (
     <Card elevation={3} className={cardClass}>
       <CardContent className={styles.content}>
         <Box className={styles.contentBox}>
-          <RedeemIcon
-            fontSize="large"
-            sx={{ fontSize: 40, color: disabled ? 'grey' : '#7b61ff' }}
-          />
-          <h2 className="rewardTitle">{title}</h2>
-          <p className="rewardCost">Coût : {cost} 🪙</p>
+          <RedeemIcon fontSize="large" sx={{ fontSize: 40, color: disabled ? 'grey' : '#7b61ff' }} />
+          <h2 className={styles.rewardTitle}>{title}</h2>
+          <p className={styles.rewardCost}>Coût : {cost} 🪙</p>
+          {link && (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              Link to reward 🔗
+            </a>
+          )}
           <Button
             variant="contained"
             size="medium"
@@ -29,7 +37,7 @@ export const RewardCard = ({ title, cost, onClaim, disabled }: RewardCardProps) 
             disabled={disabled}
             className={styles.claimButton}
           >
-            Réclamer
+            Claim
           </Button>
         </Box>
       </CardContent>

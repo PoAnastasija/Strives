@@ -45,4 +45,10 @@
     color: #666;
     margin: 0;
   }
-  
+
+  .link {
+    font-size: 0.9rem;
+    color: #7b61ff;
+    text-decoration: underline;
+    margin-bottom: 0.5rem;
+  }

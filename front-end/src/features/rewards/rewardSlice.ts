@@ -4,6 +4,7 @@ export type Reward = {
   id: string;
   title: string;
   cost: number;
+  link?: string; 
 };
 
 type RewardStore = {
@@ -14,7 +15,7 @@ type RewardStore = {
 export const useRewardStore = create<RewardStore>((set) => ({
   rewards: [
     { id: '1', title: 'Casque audio', cost: 50 },
-    { id: '2', title: 'Cours Gamedev', cost: 100 },
+    { id: '2', title: 'Cours udemy', cost: 100 },
   ],
   addReward: (reward) =>
     set((state) => ({

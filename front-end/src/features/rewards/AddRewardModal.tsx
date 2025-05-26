@@ -1,21 +1,24 @@
-import {Dialog, DialogTitle, DialogContent, TextField, Button, Box} from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, TextField, Button, Box } from '@mui/material';
 import { useState } from 'react';
 import { useRewardStore } from './rewardSlice';
-
-type Props = {
+  
+  type Props = {
     open: boolean;
     onClose: () => void;
-};
+  };
   
   export const AddRewardModal = ({ open, onClose }: Props) => {
     const { addReward } = useRewardStore();
     const [title, setTitle] = useState('');
     const [cost, setCost] = useState(10);
+    const [link, setLink] = useState('');
+  
     const handleAdd = () => {
       if (!title.trim()) return;
-      addReward({ id: crypto.randomUUID(), title, cost });
+      addReward({ id: crypto.randomUUID(), title, cost, link });
       setTitle('');
       setCost(10);
+      setLink('');
       onClose();
     };
   
@@ -31,6 +34,12 @@ type Props = {
               value={cost}
               onChange={(e) => setCost(Number(e.target.value))}
               inputProps={{ min: 1 }}
+              fullWidth
+            />
+            <TextField
+              label="Lien (facultatif)"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
               fullWidth
             />
             <Button variant="contained" onClick={handleAdd}>
