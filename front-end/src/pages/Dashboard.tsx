@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Typography, Box, Button, Grid } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 import { PageLayout } from '@components/layout/PageLayout';
 import { CompanionCard } from '@components/cards/CompanionCard';
 import { StatCard } from '@components/cards/StatCard';
@@ -8,13 +8,14 @@ import { TaskList } from '@features/tasks/TaskList';
 import { SuggestedTasksModal } from '@features/tasks/SuggestedTasksModal';
 import { useTaskStore } from '@features/tasks/taskSlice';
 import styles from './Dashboard.module.css';
+import { Task } from '@types/task';
 
 export default function Dashboard() {
   const { tasks } = useTaskStore();
-  const xp = tasks.filter((t) => t.done).reduce((acc, t) => acc + t.xp, 0);
+  const xp = tasks.filter((t: Task) => t.done).reduce((acc, t) => acc + t.xp, 0);
   const xpMax = 300;
   const level = Math.floor(xp / xpMax) + 1;
-  const gold = tasks.filter((t) => t.done).reduce((acc, t) => acc + Math.floor(t.xp / 2), 0);
+  const gold = tasks.filter((t: Task) => t.done).reduce((acc, t) => acc + Math.floor(t.xp / 2), 0);
   const [openModal, setOpenModal] = useState(false);
   const handleClaimReward = () => {
     alert('Récompense réclamée');
