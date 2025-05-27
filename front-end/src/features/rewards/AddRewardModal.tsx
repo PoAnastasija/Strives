@@ -2,7 +2,7 @@ import { Dialog, DialogTitle, DialogContent, TextField, Button, Box } from '@mui
 import { useState } from 'react';
 import { useRewardStore } from './rewardSlice';
   
-  type Props = {
+  interface Props {
     open: boolean;
     onClose: () => void;
   };

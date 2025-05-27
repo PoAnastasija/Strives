@@ -2,7 +2,7 @@ import { Card, CardContent, Box, Button } from '@mui/material';
 import RedeemIcon from '@mui/icons-material/Redeem';
 import styles from './RewardCard.module.css';
 
-type RewardCardProps = {
+interface RewardCardProps {
   title: string;
   cost: number;
   link?: string;

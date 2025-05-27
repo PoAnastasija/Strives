@@ -1,7 +1,7 @@
 import { Box, LinearProgress } from '@mui/material';
 import styles from './XpProgressBar.module.css';
 
-type XpBarProps = {
+interface XpBarProps {
   xp: number;
   xpMax: number;
 };

@@ -4,7 +4,7 @@ import { Sidebar } from './Sidebar';
 import { ReactNode } from 'react';
 import styles from './PageLayout.module.css';
 
-type PageLayoutProps = {
+interface PageLayoutProps {
   children: ReactNode;
 };
 
