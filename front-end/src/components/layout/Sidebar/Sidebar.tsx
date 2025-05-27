@@ -27,7 +27,7 @@ export const Sidebar = () => {
           <ListItemIcon><StorefrontIcon /></ListItemIcon>
           <ListItemText primary="Shop" />
         </ListItem>
-        <ListItem button>
+        <ListItem button component={Link} to="/focus">
           <ListItemIcon><AccessTimeIcon /></ListItemIcon>
           <ListItemText primary="Focus" />
         </ListItem>

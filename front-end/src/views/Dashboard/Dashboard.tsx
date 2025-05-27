@@ -58,7 +58,7 @@ export default function Dashboard() {
               </Grid>
               <Grid item>
                 <RewardCard
-                  title="Tablette graphique"
+                  title="Title"
                   cost={100}
                   onClaim={handleClaimReward}
                   disabled={gold < 100}
