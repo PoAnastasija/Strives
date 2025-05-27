@@ -13,7 +13,7 @@ import { useUserXp } from '@hooks/useUserXp';
 export default function Dashboard() {
   const { gold } = useTaskStore();
   const xp = useUserXp();
-  const xpMax = 300;
+  const xpMax = 1000;
   const level = Math.floor(xp / xpMax) + 1;
   const [openModal, setOpenModal] = useState(false);
 

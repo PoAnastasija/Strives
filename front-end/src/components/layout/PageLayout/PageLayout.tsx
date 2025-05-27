@@ -1,6 +1,6 @@
 import { Box, CssBaseline } from '@mui/material';
-import { TopAppBar } from '../AppBar/AppBar';
-import { Sidebar } from '../Sidebar/Sidebar';
+import { TopAppBar } from '@components/layout/AppBar/AppBar';
+import { Sidebar } from '@components/layout/Sidebar/Sidebar';
 import { ReactNode } from 'react';
 import styles from './PageLayout.module.css';
 
