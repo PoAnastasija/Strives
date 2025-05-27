@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Box, Button, Grid } from '@mui/material';
-import { PageLayout } from '@components/layout/PageLayout';
-import { CompanionCard } from '@components/cards/CompanionCard';
-import { StatCard } from '@components/cards/StatCard';
-import { RewardCard } from '@components/cards/RewardCard';
-import { TaskList } from '@features/tasks/TaskList';
-import { SuggestedTasksModal } from '@features/tasks/SuggestedTasksModal';
+import { PageLayout } from '@components/layout/PageLayout/PageLayout';
+import { CompanionCard } from '@components/cards/CompanionCard/CompanionCard';
+import { StatCard } from '@components/cards/StatCard/StatCard';
+import { RewardCard } from '@components/cards/RewardCard/RewardCard';
+import { TaskList } from '@features/tasks/TaskList/TaskList';
+import { SuggestedTasksModal } from '@features/tasks/SuggestedTasks/SuggestedTasksModal';
 import { useTaskStore } from '@features/tasks/taskSlice';
 import styles from './Dashboard.module.css';
 import { useUserXp } from '@hooks/useUserXp';

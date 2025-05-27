@@ -1,7 +1,7 @@
 import { Box, Button, Dialog, DialogTitle, DialogContent, Grid, Tabs, Tab, Paper,
   TextField, MenuItem } from '@mui/material';
 import { useState } from 'react';
-import { useTaskStore } from './taskSlice';
+import { useTaskStore } from '../taskSlice';
 import styles from './SuggestedTasksModal.module.css';
 import { Category, CATEGORY_LABELS } from '@types/category';
 

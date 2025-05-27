@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { useTaskStore } from '@features/tasks/taskSlice';
-import { TaskCard } from '@components/cards/TaskCard';
+import { TaskCard } from '@components/cards/TaskCard/TaskCard';
 import styles from './TaskList.module.css';
 
 export const TaskList = () => {

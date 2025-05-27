@@ -1,6 +1,6 @@
 import { Box, Grid, Button } from '@mui/material';
-import { PageLayout } from '@components/layout/PageLayout';
-import { RewardCard } from '@components/cards/RewardCard';
+import { PageLayout } from '@components/layout/PageLayout/PageLayout';
+import { RewardCard } from '@components/cards/RewardCard/RewardCard';
 import { useRewardStore } from '@features/rewards/rewardSlice';
 import { useState } from 'react';
 import { AddRewardModal } from '@features/rewards/AddRewardModal';
@@ -10,14 +10,13 @@ export default function Shop() {
   const { rewards } = useRewardStore();
   const { gold, spendGold } = useTaskStore();
   const [open, setOpen] = useState(false);
-
   const handleClaimReward = (reward) => {
     if (gold < reward.cost) {
-      alert("❌ Pas assez de pièces !");
+      console.log("Pas assez de pièces");
       return;
     }
     spendGold(reward.cost);
-    alert(`✅ Récompense "${reward.title}" réclamée !`);
+    console.log(`Récompense "${reward.title}" réclamée`);
   };
 
   return (

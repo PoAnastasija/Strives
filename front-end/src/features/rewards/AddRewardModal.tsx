@@ -2,12 +2,12 @@ import { Dialog, DialogTitle, DialogContent, TextField, Button, Box } from '@mui
 import { useState } from 'react';
 import { useRewardStore } from './rewardSlice';
   
-  interface Props {
+  interface AddRewardProps {
     open: boolean;
     onClose: () => void;
   };
   
-  export const AddRewardModal = ({ open, onClose }: Props) => {
+  export const AddRewardModal = ({ open, onClose }: AddRewardProps) => {
     const { addReward } = useRewardStore();
     const [title, setTitle] = useState('');
     const [cost, setCost] = useState(10);
