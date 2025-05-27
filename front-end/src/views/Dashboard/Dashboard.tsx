@@ -18,7 +18,7 @@ export default function Dashboard() {
   const [openModal, setOpenModal] = useState(false);
 
   const handleClaimReward = () => {
-    alert('Récompense réclamée');
+    alert('Claimed');
   };
 
   return (

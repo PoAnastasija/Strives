@@ -12,11 +12,11 @@ export default function Shop() {
   const [open, setOpen] = useState(false);
   const handleClaimReward = (reward) => {
     if (gold < reward.cost) {
-      console.log("Pas assez de pièces");
+      console.log("Not enough money");
       return;
     }
     spendGold(reward.cost);
-    console.log(`Récompense "${reward.title}" réclamée`);
+    console.log(`"${reward.title}" claimed`);
   };
 
   return (
