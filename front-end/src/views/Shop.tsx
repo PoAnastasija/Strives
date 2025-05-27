@@ -24,7 +24,7 @@ export default function Shop() {
     <PageLayout>
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <h1>🏪 Shop</h1>
-        <div>💰 Or : {gold}</div>
+        <div>🪙 Your coins : {gold}</div>
         <Button variant="contained" onClick={() => setOpen(true)}>
           Add a reward
         </Button>
@@ -38,7 +38,7 @@ export default function Shop() {
               cost={reward.cost}
               link={reward.link}
               onClaim={() => handleClaimReward(reward)}
-              disabled={gold < reward.cost} // 👈 désactivé si trop cher
+              disabled={gold < reward.cost}
             />
           </Grid>
         ))}

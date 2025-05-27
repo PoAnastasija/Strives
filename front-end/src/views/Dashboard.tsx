@@ -9,15 +9,14 @@ import { SuggestedTasksModal } from '@features/tasks/SuggestedTasksModal';
 import { useTaskStore } from '@features/tasks/taskSlice';
 import styles from './Dashboard.module.css';
 import { useUserXp } from '@hooks/useUserXp';
-import { Task } from '@features/tasks/taskSlice';
 
 export default function Dashboard() {
-  const { tasks } = useTaskStore();
+  const { gold } = useTaskStore();
   const xp = useUserXp();
   const xpMax = 300;
   const level = Math.floor(xp / xpMax) + 1;
-  const gold = tasks.filter((t: Task) => t.done).reduce((acc, t) => acc + Math.floor(t.xp / 2), 0);
   const [openModal, setOpenModal] = useState(false);
+
   const handleClaimReward = () => {
     alert('Récompense réclamée');
   };

@@ -24,12 +24,12 @@ import { useRewardStore } from './rewardSlice';
   
     return (
       <Dialog open={open} onClose={onClose}>
-        <DialogTitle>Ajouter une récompense</DialogTitle>
+        <DialogTitle>Add a reward</DialogTitle>
         <DialogContent>
           <Box display="flex" flexDirection="column" gap={2} mt={1}>
-            <TextField label="Nom" value={title} onChange={(e) => setTitle(e.target.value)} fullWidth />
+            <TextField label="Name" value={title} onChange={(e) => setTitle(e.target.value)} fullWidth />
             <TextField
-              label="Coût"
+              label="Cost"
               type="number"
               value={cost}
               onChange={(e) => setCost(Number(e.target.value))}
@@ -37,13 +37,13 @@ import { useRewardStore } from './rewardSlice';
               fullWidth
             />
             <TextField
-              label="Lien (facultatif)"
+              label="Link (optional)"
               value={link}
               onChange={(e) => setLink(e.target.value)}
               fullWidth
             />
             <Button variant="contained" onClick={handleAdd}>
-              Ajouter
+              Add
             </Button>
           </Box>
         </DialogContent>

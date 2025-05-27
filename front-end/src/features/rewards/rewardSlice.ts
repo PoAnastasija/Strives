@@ -1,11 +1,5 @@
 import { create } from 'zustand';
-
-export type Reward = {
-  id: string;
-  title: string;
-  cost: number;
-  link?: string; 
-};
+import { Reward } from '@types/reward';
 
 type RewardStore = {
   rewards: Reward[];

@@ -1,35 +1,34 @@
-import { Box, Button, Dialog, DialogTitle, DialogContent, Grid, Tabs, Tab,
-  Paper, TextField, MenuItem } from '@mui/material';
+import { Box, Button, Dialog, DialogTitle, DialogContent, Grid, Tabs, Tab, Paper,
+  TextField, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { useTaskStore } from './taskSlice';
 import styles from './SuggestedTasksModal.module.css';
-
-const suggestions = {
-  Movement: ['🤸 Take a stretch break', '🚶 Go for a 15 min walk', '🏃 Run for 15 min', '🧘 Meditate for 10 min'],
-  work: ['⏳ Do 45 min of deep work', '🧹 Clean for 15 min', '⭐ Start with the most important task'],
-  nutrition: ['🚰 Drink 2L of water', '🍏 Eat a fruit', '🍩 Don’t eat processed sugar',
-     '🍵 Drink tea', '📴 Eat without distractions'],
-};
-
-type Category = 'Movement' | 'work' | 'nutrition' | 'custom';
+import { Category, CATEGORY_LABELS } from '@types/category';
 
 type SuggestedTasksModalProps = {
   open: boolean;
   onClose: () => void;
 };
 
+const suggestions: Record<Category, string[]> = {
+  movement: ['🤸 Take a stretch break', '🚶 Go for a 15 min walk', '🏃 Run for 15 min', '🧘 Meditate for 10 min'],
+  work: ['⏳ Do 45 min of deep work', '🧹 Clean for 15 min', '⭐ Start with the most important task'],
+  nutrition: ['🚰 Drink 2L of water', '🍏 Eat a fruit', '🍩 Don’t eat processed sugar',
+    '🍵 Drink tea', '📴 Eat without distractions'],
+};
+
 export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps) => {
-  const [category, setCategory] = useState<Category>('Movement');
+  const [category, setCategory] = useState<Category | 'custom'>('movement');
   const { addTask } = useTaskStore();
   const [customTitle, setCustomTitle] = useState('');
   const [customXp, setCustomXp] = useState(10);
-  const [customType, setCustomType] = useState<'Movement' | 'work' | 'nutrition'>('Movement');
+  const [customType, setCustomType] = useState<Category>('movement');
 
-  const handleAdd = (title: string, type: Category = category) => {
+  const handleAdd = (title: string, type: Category = category as Category) => {
     addTask({
       id: crypto.randomUUID(),
       title,
-      type: type as 'Movement' | 'work' | 'nutrition',
+      type,
       xp: 10,
       done: false,
     });
@@ -53,9 +52,9 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
       <DialogTitle>Add a task</DialogTitle>
       <DialogContent>
         <Tabs value={category} onChange={(_, val) => setCategory(val)} centered>
-          <Tab label="🏋️ Movement" value="Movement" />
-          <Tab label="💼 Work" value="work" />
-          <Tab label="🍎 Nutrition" value="nutrition" />
+          {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
+            <Tab key={key} label={label} value={key} />
+          ))}
           <Tab label="🛠️ Custom" value="custom" />
         </Tabs>
 
@@ -80,12 +79,14 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
                 select
                 label="Category"
                 value={customType}
-                onChange={(e) => setCustomType(e.target.value as any)}
+                onChange={(e) => setCustomType(e.target.value as Category)}
                 fullWidth
               >
-                <MenuItem value="Movement">Movement</MenuItem>
-                <MenuItem value="work">Work</MenuItem>
-                <MenuItem value="nutrition">Nutrition</MenuItem>
+                {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
+                  <MenuItem key={key} value={key}>
+                    {label}
+                  </MenuItem>
+                ))}
               </TextField>
               <Button onClick={handleAddCustom} variant="contained">
                 Add
@@ -93,7 +94,7 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
             </Box>
           ) : (
             <Grid container spacing={2}>
-              {suggestions[category].map((task) => (
+              {suggestions[category as Category].map((task) => (
                 <Grid item xs={12} sm={6} key={task}>
                   <Paper className={styles.suggestionCard} onClick={() => handleAdd(task)}>
                     <p className={styles.taskText}>{task}</p>

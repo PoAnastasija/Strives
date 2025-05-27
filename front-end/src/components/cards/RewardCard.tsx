@@ -19,7 +19,7 @@ export const RewardCard = ({ title, cost, link, onClaim, disabled }: RewardCardP
         <Box className={styles.contentBox}>
           <RedeemIcon fontSize="large" sx={{ fontSize: 40, color: disabled ? 'grey' : '#7b61ff' }} />
           <h2 className={styles.rewardTitle}>{title}</h2>
-          <p className={styles.rewardCost}>Coût : {cost} 🪙</p>
+          <p className={styles.rewardCost}>Cost : {cost} 🪙</p>
           {link && (
             <a
               href={link}
