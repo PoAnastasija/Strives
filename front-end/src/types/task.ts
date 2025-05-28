@@ -1,4 +1,4 @@
-export type TaskType = 'daily' | 'habit' | 'todo';
+export type TaskType = 'daily' | 'habit' | 'todo' | 'movement' | 'nutrition' | 'work';
 
 export interface Task {
   id: string;
