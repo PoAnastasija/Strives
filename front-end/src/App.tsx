@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Dashboard from '@views/Dashboard/Dashboard';
 import Shop from '@views/Shop';
-import FocusPage from '@views/FocusPage';
+import FocusPage from '@views/FocusPage/FocusPage';
 
 function App() {
   return (
