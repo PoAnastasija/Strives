@@ -1,9 +1,9 @@
 export type TaskType = 'daily' | 'habit' | 'todo';
 
-export type Task = {
+export interface Task {
   id: string;
   title: string;
-  type: 'daily' | 'habit' | 'todo';
+  type: TaskType;
   xp: number;
   done: boolean;
 };

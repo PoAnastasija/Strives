@@ -4,3 +4,9 @@ export interface Reward {
     cost: number;
     link?: string; 
   };
+
+  export interface RewardStore {
+    rewards: Reward[];
+    addReward: (reward: Reward) => void;
+  };
+  

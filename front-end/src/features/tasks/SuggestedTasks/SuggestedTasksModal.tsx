@@ -3,12 +3,7 @@ import { Box, Button, Dialog, DialogTitle, DialogContent, Grid, Tabs, Tab, Paper
 import { useState } from 'react';
 import { useTaskStore } from '@features/tasks/taskSlice';
 import styles from './SuggestedTasksModal.module.css';
-import { Category, CATEGORY_LABELS } from '@types/category';
-
-type SuggestedTasksModalProps = {
-  open: boolean;
-  onClose: () => void;
-};
+import { Category, CATEGORY_LABELS, SuggestedTasksModalProps } from '@types/category';
 
 const suggestions: Record<Category, string[]> = {
   movement: ['🤸 Take a stretch break', '🚶 Go for a 15 min walk', '🏃 Run for 15 min', '🧘 Meditate for 10 min'],
@@ -20,8 +15,8 @@ const suggestions: Record<Category, string[]> = {
 export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps) => {
   const [category, setCategory] = useState<Category | 'custom'>('movement');
   const { addTask } = useTaskStore();
-  const [customTitle, setCustomTitle] = useState('');
-  const [customXp, setCustomXp] = useState(10);
+  const [customTitle, setCustomTitle] = useState<string>('');
+  const [customXp, setCustomXp] = useState<number>(10);
   const [customType, setCustomType] = useState<Category>('movement');
 
   const handleAdd = (title: string, type: Category = category as Category) => {

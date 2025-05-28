@@ -9,9 +9,9 @@ import { useRewardStore } from './rewardSlice';
   
   export const AddRewardModal = ({ open, onClose }: AddRewardProps) => {
     const { addReward } = useRewardStore();
-    const [title, setTitle] = useState('');
-    const [cost, setCost] = useState(10);
-    const [link, setLink] = useState('');
+    const [title, setTitle] = useState<string>('');
+    const [cost, setCost] = useState<number>(10);
+    const [link, setLink] = useState<string>('');
   
     const handleAdd = () => {
       if (!title.trim()) return;

@@ -1,12 +1,13 @@
 import { Button, Dialog, DialogTitle, DialogContent, TextField, MenuItem, DialogActions } from '@mui/material';
   import { useState } from 'react';
   import { useTaskStore } from './taskSlice';
+  import { TaskType } from '@types/category';
   
   export const AddTaskModal = () => {
-    const [open, setOpen] = useState(false);
-    const [title, setTitle] = useState('');
-    const [type, setType] = useState<'daily' | 'habit' | 'todo'>('daily');
-    const [xp, setXp] = useState(5);
+    const [open, setOpen] = useState<boolean>(false);
+    const [title, setTitle] = useState<string>('');
+    const [type, setType] = useState<TaskType>('daily');
+    const [xp, setXp] = useState<number>(5);
     const { addTask } = useTaskStore();
     const handleSubmit = () => {
       addTask({ id: crypto.randomUUID(), title, type, xp, done: false });

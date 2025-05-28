@@ -5,12 +5,13 @@ import { useRewardStore } from '@features/rewards/rewardSlice';
 import { useState } from 'react';
 import { AddRewardModal } from '@features/rewards/AddRewardModal';
 import { useTaskStore } from '@features/tasks/taskSlice';
+import { Reward } from '@types/reward';
 
 export default function Shop() {
   const { rewards } = useRewardStore();
   const { gold, spendGold } = useTaskStore();
-  const [open, setOpen] = useState(false);
-  const handleClaimReward = (reward) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const handleClaimReward = (reward: Reward) => {
     if (gold < reward.cost) {
       console.log("Not enough money");
       return;

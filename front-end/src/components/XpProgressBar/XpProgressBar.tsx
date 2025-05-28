@@ -1,5 +1,6 @@
 import { Box, LinearProgress } from '@mui/material';
 import styles from './XpProgressBar.module.css';
+import { useMemo } from 'react';
 
 interface XpBarProps {
   xp: number;
@@ -7,7 +8,9 @@ interface XpBarProps {
 };
 
 export const XpProgressBar = ({ xp, xpMax }: XpBarProps) => {
-  const percent = Math.min((xp / xpMax) * 100, 100);
+  const percent = useMemo(() => {
+    return Math.min((xp / xpMax) * 100, 100);
+  }, [xp, xpMax]);
 
   return (
     <Box className={styles.wrapper}>

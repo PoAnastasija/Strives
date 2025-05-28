@@ -15,10 +15,10 @@ export default function Dashboard() {
   const xp = useUserXp();
   const xpMax = 1000;
   const level = Math.floor(xp / xpMax) + 1;
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
 
   const handleClaimReward = () => {
-    alert('Claimed');
+    console.log('Reward claimed');
   };
 
   return (

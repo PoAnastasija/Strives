@@ -1,10 +1,6 @@
 import { create } from 'zustand';
-import { Reward } from '@types/reward';
+import { RewardStore } from '@types/reward';
 
-type RewardStore = {
-  rewards: Reward[];
-  addReward: (reward: Reward) => void;
-};
 
 export const useRewardStore = create<RewardStore>((set) => ({
   rewards: [

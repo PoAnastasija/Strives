@@ -1,4 +1,4 @@
-import { Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Drawer, List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import FlagIcon from '@mui/icons-material/Flag';
 import StorefrontIcon from '@mui/icons-material/Storefront';
@@ -15,26 +15,26 @@ export const Sidebar = () => {
       classes={{ paper: styles.sidebarPaper }}
     >
       <List>
-        <ListItem button component={Link} to="/">
+        <ListItemButton component={Link} to="/">
           <ListItemIcon><HomeIcon /></ListItemIcon>
           <ListItemText primary="Home" />
-        </ListItem>
-        <ListItem button>
+        </ListItemButton>
+        <ListItemButton>
           <ListItemIcon><FlagIcon /></ListItemIcon>
           <ListItemText primary="Quests" />
-        </ListItem>
-        <ListItem button component={Link} to="/shop">
+        </ListItemButton>
+        <ListItemButton component={Link} to="/shop">
           <ListItemIcon><StorefrontIcon /></ListItemIcon>
           <ListItemText primary="Shop" />
-        </ListItem>
-        <ListItem button component={Link} to="/focus">
+        </ListItemButton>
+        <ListItemButton component={Link} to="/focus">
           <ListItemIcon><AccessTimeIcon /></ListItemIcon>
           <ListItemText primary="Focus" />
-        </ListItem>
-        <ListItem button>
+        </ListItemButton>
+        <ListItemButton>
           <ListItemIcon><ComputerIcon /></ListItemIcon>
           <ListItemText primary="Projects" />
-        </ListItem>
+        </ListItemButton>
       </List>
     </Drawer>
   );

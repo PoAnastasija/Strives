@@ -1,10 +1,11 @@
-import { XpProgressBar } from '@components/layout/XpProgressBar/XpProgressBar';
+import { XpProgressBar } from '@components/XpProgressBar/XpProgressBar';
 import monsterImg from '@assets/man.png';
 import styles from './CompanionCard.module.css';
 import { useUserXp } from '@hooks/useUserXp';
 
 interface CompanionCardProps {
   xpMax: number;
+  xp: number;
 }
 
 export const CompanionCard = ({ xpMax }: CompanionCardProps) => {

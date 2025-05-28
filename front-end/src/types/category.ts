@@ -5,3 +5,8 @@ export const CATEGORY_LABELS: Record<Category, string> = {
   work: '💼 Work',
   nutrition: '🍎 Nutrition',
 };
+
+export interface SuggestedTasksModalProps {
+  open: boolean;
+  onClose: () => void;
+};
