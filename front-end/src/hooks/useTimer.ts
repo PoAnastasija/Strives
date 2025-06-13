@@ -1,28 +1,45 @@
 import { useState, useRef } from 'react';
 
-export const useTimer = (initialMinutes = 45) => {
+export const useTimer = (
+  initialMinutes = 45,
+  onMinuteChange?: (delta: number) => void,
+  onComplete?: () => void
+) => {
   const [minutes, setMinutes] = useState<number>(initialMinutes);
   const [seconds, setSeconds] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
+  const minutesRef = useRef<number>(initialMinutes);
+  const secondsRef = useRef<number>(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  //fix le pb de timer à 1min, pouvoir augmenter mais pas diminuer
   const start = () => {
-    if (!isRunning) {
-      setIsRunning(true);
-      timerRef.current = setInterval(() => {
-        setSeconds((s) => {
-          if (minutes === 0 && s === 0) {
-            clearInterval(timerRef.current!);
-            setIsRunning(false);
-            return 0;
-          }
-          if (s === 0) {
-            setMinutes((m) => Math.max(m - 1, 0));
-            return 59;
-          }
-          return s - 1;
-        });
-      }, 1000);
-    }
+    if (isRunning) return;
+    setIsRunning(true);
+    minutesRef.current = minutes;
+    secondsRef.current = seconds;
+    timerRef.current = setInterval(() => {
+      if (secondsRef.current > 0) {
+        secondsRef.current -= 1;
+        setSeconds(secondsRef.current);
+      } else {
+        if (minutesRef.current > 0) {
+          minutesRef.current -= 1;
+          setMinutes(minutesRef.current);
+          secondsRef.current = 59;
+          setSeconds(59);
+          onMinuteChange?.(1);
+        } else {
+          clearInterval(timerRef.current!);
+          setIsRunning(false);
+          onComplete?.();
+          minutesRef.current = initialMinutes;
+          secondsRef.current = 0;
+          setMinutes(initialMinutes);
+          setSeconds(0);
+        }
+      }
+    }, 1000);
   };
 
   const pause = () => {
@@ -32,13 +49,26 @@ export const useTimer = (initialMinutes = 45) => {
 
   const reset = () => {
     clearInterval(timerRef.current!);
+    minutesRef.current = initialMinutes;
+    secondsRef.current = 0;
     setMinutes(initialMinutes);
     setSeconds(0);
     setIsRunning(false);
   };
 
-  const incrementMinutes = () => setMinutes((m) => Math.min(m + 1, 60));
-  const decrementMinutes = () => setMinutes((m) => Math.max(m - 1, 1));
+  const incrementMinutes = () => {
+    const next = Math.min(minutesRef.current + 1, 60);
+    minutesRef.current = next;
+    setMinutes(next);
+  };
+
+  const decrementMinutes = () => {
+    if (minutesRef.current > 1) {
+      const next = minutesRef.current - 1;
+      minutesRef.current = next;
+      setMinutes(next);
+    }
+  };
 
   return {
     minutes,

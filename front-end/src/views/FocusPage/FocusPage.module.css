@@ -17,7 +17,12 @@
     gap: 1rem;
   }
   
-  .videoSection {
+  /* .videoSection {
     margin-top: 2rem;
-  }
-  
+  } */
+  .timerSection, .videoSection {
+  padding: 1rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  background-color: white;
+}
