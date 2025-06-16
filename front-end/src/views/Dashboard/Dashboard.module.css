@@ -1,39 +1,38 @@
 .dashboardContainer {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-  
+
 @media (min-width: 768px) {
-    .dashboardContainer {
-      padding-left: 2rem;
-      padding-right: 2rem;
-    }
+  .dashboardContainer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
-  
+
 .header {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 }
-  
+
 .columnLayout {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
-  
+
 .addButton {
-    text-transform: none;
-    margin-top: 1.5rem;
+  text-transform: none;
+  margin-top: 1.5rem;
 }
 
 h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
-  
+
 p {
-    font-size: 1rem;
-    color: #333;
+  font-size: 1rem;
+  color: inherit;
 }
-    

@@ -1,23 +1,44 @@
-import { Card, CardContent, Box } from '@mui/material';
-import { ReactNode } from 'react';
-import styles from './StatCard.module.css';
 
-interface StatCardProps {
+import { Box, Typography, useTheme } from '@mui/material';
+
+type Props = {
   title: string;
-  value: string | number;
-  icon?: ReactNode;
-}
+  value: string;
+};
 
-export const StatCard = ({ title, value, icon }: StatCardProps) => (
-  <Card elevation={2} className={styles.card}>
-    <CardContent className={styles.content}>
-      <Box className={styles.inner}>
-        {icon && <Box className={styles.icon}>{icon}</Box>}
-        <Box>
-          <p className={styles.title}>{title}</p>
-          <h2 className={styles.value}>{value}</h2>
-        </Box>
-      </Box>
-    </CardContent>
-  </Card>
-);
+export const StatCard = ({ title, value }: Props) => {
+  const theme = useTheme();
+
+  return (
+    <Box
+      sx={{
+        backgroundColor: theme.palette.background.paper,
+        color: theme.palette.text.primary,
+        borderRadius: 2,
+        p: 8,
+        minHeight: 100,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        boxShadow:
+          theme.palette.mode === 'dark'
+            ? '0 0 4px rgba(255,255,255,0.05)'
+            : '0 1px 3px rgba(0,0,0,0.1)',
+      }}
+    >
+      <Typography
+        variant="subtitle2"
+        sx={{ color: 'inherit', fontWeight: 600, mb: 1 }}
+      >
+        {title}
+      </Typography>
+      <Typography
+        variant="h6"
+        sx={{ color: 'inherit', fontWeight: 700 }}
+      >
+        {value}
+      </Typography>
+    </Box>
+  );
+};

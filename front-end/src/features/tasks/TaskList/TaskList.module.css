@@ -10,15 +10,15 @@
     margin-top: 0.5rem;
   }
 
-  .title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-  }
-  
-  .empty {
-    font-size: 1rem;
-    color: #666;
-    margin-top: 0.5rem;
-  }
-  
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary, #000);
+}
+
+.empty {
+  font-size: 1rem;
+  color: var(--text-secondary, #666);
+  margin-top: 0.5rem;
+}

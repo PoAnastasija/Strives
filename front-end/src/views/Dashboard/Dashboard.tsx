@@ -23,11 +23,17 @@ export default function Dashboard() {
 
   return (
     <PageLayout>
-      <Box className={styles.dashboardContainer}>
+      <Box
+        className={styles.dashboardContainer}
+        sx={{
+          color: theme => theme.palette.text.primary,
+          backgroundColor: theme => theme.palette.background.default,
+        }}
+      >
         <Box className={styles.header}>
           <h1>Hello !</h1>
-          <p>Ready to earn XP ?</p>
         </Box>
+
         <Grid container spacing={5} justifyContent="center">
           <Grid item xs={12} md={4}>
             <Box className={styles.columnLayout}>
@@ -44,6 +50,7 @@ export default function Dashboard() {
               </Box>
             </Box>
           </Grid>
+
           <Grid item xs={12} md={8}>
             <Grid container direction="column" spacing={3}>
               <Grid item>
@@ -67,6 +74,7 @@ export default function Dashboard() {
             </Grid>
           </Grid>
         </Grid>
+
         <SuggestedTasksModal open={openModal} onClose={() => setOpenModal(false)} />
       </Box>
     </PageLayout>

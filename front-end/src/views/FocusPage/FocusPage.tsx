@@ -1,12 +1,5 @@
 import { useRef } from 'react';
-import {
-  Box,
-  TextField,
-  Button,
-  List,
-  ListItem,
-  IconButton
-} from '@mui/material';
+import { Box, TextField, Button, List, ListItem, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -75,11 +68,11 @@ export default function FocusPage() {
       <h1>🎯 Focus</h1>
 
       <Box mb={3}>
-        <strong>Pièces :</strong> {coins}
+        <strong>Coins :</strong> {coins}
       </Box>
 
       <Box className={styles.statsSection} mb={4}>
-        <h2>Statistiques quotidiennes</h2>
+        <h2>Daily Statistics</h2>
         <StatsChart data={stats} />
       </Box>
 

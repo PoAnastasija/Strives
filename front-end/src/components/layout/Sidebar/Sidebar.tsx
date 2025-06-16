@@ -19,7 +19,8 @@ export const Sidebar = () => {
           <ListItemIcon><HomeIcon /></ListItemIcon>
           <ListItemText primary="Home" />
         </ListItemButton>
-        <ListItemButton>
+        {/* <ListItemButton> */}
+        <ListItemButton component={Link} to="/quests">
           <ListItemIcon><FlagIcon /></ListItemIcon>
           <ListItemText primary="Quests" />
         </ListItemButton>
@@ -31,7 +32,7 @@ export const Sidebar = () => {
           <ListItemIcon><AccessTimeIcon /></ListItemIcon>
           <ListItemText primary="Focus" />
         </ListItemButton>
-        <ListItemButton>
+        <ListItemButton component={Link} to="/projects">
           <ListItemIcon><ComputerIcon /></ListItemIcon>
           <ListItemText primary="Projects" />
         </ListItemButton>

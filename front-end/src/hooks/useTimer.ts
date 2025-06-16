@@ -12,7 +12,6 @@ export const useTimer = (
   const secondsRef = useRef<number>(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  //fix le pb de timer à 1min, pouvoir augmenter mais pas diminuer
   const start = () => {
     if (isRunning) return;
     setIsRunning(true);

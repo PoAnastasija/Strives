@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { ThemeProvider, CssBaseline } from '@mui/material'; 
-import { muiTheme } from './theme/muiTheme';
+import { CssBaseline } from '@mui/material'; 
+import { CustomThemeProvider } from '@theme/themeContext';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={muiTheme}>
+    <CustomThemeProvider>
       <CssBaseline />
       <App />
-    </ThemeProvider>
+    </CustomThemeProvider>
   </React.StrictMode>
 );

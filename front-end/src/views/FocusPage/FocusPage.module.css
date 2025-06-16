@@ -1,28 +1,38 @@
-.timerSection {
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 1rem;
-  }
-  
-  .timerDisplay {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0;
-  }
-  
-  .controls {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  /* .videoSection {
-    margin-top: 2rem;
-  } */
   .timerSection, .videoSection {
   padding: 1rem;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   background-color: white;
+} 
+.timerSection {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: var(--background-paper, #ffffff);
+  color: var(--text-primary, #000000);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.timerDisplay {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  color: var(--text-primary, #000000);
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.videoSection {
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: var(--background-paper, #ffffff);
+  color: var(--text-primary, #000000);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
