@@ -24,7 +24,7 @@ export const TopAppBar = () => {
         <h1 className={styles.title} style={{ color }}>Strives</h1>
 
         <div className={styles.rightSection}>
-          <Tooltip title="Changer de thème">
+          <Tooltip title="Change theme">
             <IconButton onClick={toggleTheme} style={{ color }}>
               {icon}
             </IconButton>

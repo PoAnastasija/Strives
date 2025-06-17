@@ -7,8 +7,8 @@ import { RewardCard } from '@components/cards/RewardCard/RewardCard';
 import { TaskList } from '@features/tasks/TaskList/TaskList';
 import { SuggestedTasksModal } from '@features/tasks/SuggestedTasks/SuggestedTasksModal';
 import { useTaskStore } from '@features/tasks/taskSlice';
-import styles from './Dashboard.module.css';
 import { useUserXp } from '@hooks/useUserXp';
+import styles from './Dashboard.module.css';
 
 export default function Dashboard() {
   const { gold } = useTaskStore();
@@ -23,34 +23,27 @@ export default function Dashboard() {
 
   return (
     <PageLayout>
-      <Box
-        className={styles.dashboardContainer}
-        sx={{
-          color: theme => theme.palette.text.primary,
-          backgroundColor: 'transparent',
-          backdropFilter: 'blur(4px)',
-        }}
-      >
+      <Box display="flex" justifyContent="center">
+        <CompanionCard xp={xp} xpMax={xpMax} />
+      </Box>
+
+      <Box className={styles.dashboardContainer}>
         <Box className={styles.header}>
           <h1>Hello !</h1>
+          <p>Today is a good day to grow!</p>
         </Box>
 
         <Grid container spacing={5} justifyContent="center">
           <Grid item xs={12} md={4}>
             <Box className={styles.columnLayout}>
-              <Box sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-                <CompanionCard xp={xp} xpMax={xpMax} />
-              </Box>
-              <Box>
-                <TaskList />
-                <Button
-                  variant="contained"
-                  onClick={() => setOpenModal(true)}
-                  className={styles.addButton}
-                >
-                  Add a task
-                </Button>
-              </Box>
+              <TaskList />
+              <Button
+                variant="contained"
+                onClick={() => setOpenModal(true)}
+                className={styles.addButton}
+              >
+                Add a task
+              </Button>
             </Box>
           </Grid>
 
@@ -67,14 +60,12 @@ export default function Dashboard() {
                 </Grid>
               </Grid>
               <Grid item>
-                <Box sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
-                  <RewardCard
-                    title="Title"
-                    cost={100}
-                    onClaim={handleClaimReward}
-                    disabled={gold < 100}
-                  />
-                </Box>
+                <RewardCard
+                  title="Title"
+                  cost={100}
+                  onClaim={handleClaimReward}
+                  disabled={gold < 100}
+                />
               </Grid>
             </Grid>
           </Grid>

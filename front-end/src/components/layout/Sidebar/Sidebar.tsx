@@ -19,7 +19,7 @@ export const Sidebar = () => {
 
   return (
     <aside className={styles.sidebar}>
-      <h2 className={styles.title}>Home</h2>
+      <h2 className={styles.title}>Strives</h2>
       <nav className={styles.nav}>
         {links.map(({ to, label, icon }) => (
           <NavLink
