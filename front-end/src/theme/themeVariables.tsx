@@ -2,6 +2,7 @@ import { useTheme } from '@mui/material/styles';
 import { useEffect } from 'react';
 import bgLight from '@assets/background.png';
 import bgDark from '@assets/dark_mode_background.png';
+import bgFocus from '@assets/focus_background.png';
 
 const ThemeCSSVariables = () => {
   const theme = useTheme();

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Grid } from '@mui/material';
+import { Box, Button, Grid, Typography } from '@mui/material';
 import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 import { CompanionCard } from '@components/cards/CompanionCard/CompanionCard';
 import { StatCard } from '@components/cards/StatCard/StatCard';
@@ -23,39 +23,39 @@ export default function Dashboard() {
 
   return (
     <PageLayout>
-      <Box display="flex" justifyContent="center">
+      <Box
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        sx={{ paddingY: 4 }}
+      >
         <CompanionCard xp={xp} xpMax={xpMax} />
-      </Box>
-
-      <Box className={styles.dashboardContainer}>
-        <Box className={styles.header}>
-          <h1>Hello !</h1>
-          <p>Today is a good day to grow!</p>
-        </Box>
-
-        <Grid container spacing={5} justifyContent="center">
-          <Grid item xs={12} md={4}>
+        <Grid container spacing={5} justifyContent="center" maxWidth="md">
+          <Grid item xs={12} md={6}>
             <Box className={styles.columnLayout}>
               <TaskList />
               <Button
                 variant="contained"
                 onClick={() => setOpenModal(true)}
                 className={styles.addButton}
+                sx={{ mt: 2 }}
               >
                 Add a task
               </Button>
             </Box>
           </Grid>
 
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12} md={6}>
             <Grid container direction="column" spacing={3}>
               <Grid item>
-                <Grid container spacing={3}>
-                  <Grid item xs={6} md={4}>
-                    <StatCard title="Levels" value={`${level} 👑`} />
+                <Grid container spacing={3} justifyContent="center">
+                  <Grid item xs={6} md={6}>
+                    <StatCard title="Levels" value={`${level}`} />
                   </Grid>
-                  <Grid item xs={6} md={4}>
-                    <StatCard title="Money" value={`${gold} 🪙`} />
+                  <Grid item xs={6} md={6}>
+                    <StatCard title="Money" value={`${gold}`} />
                   </Grid>
                 </Grid>
               </Grid>

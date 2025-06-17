@@ -14,7 +14,7 @@ export const muiTheme = createTheme({
       paper: '#ffffff',
     },
     text: {
-      primary: '#1a1a1a',
+      primary: '#31265a',
       secondary: '#666',
     },
   },
