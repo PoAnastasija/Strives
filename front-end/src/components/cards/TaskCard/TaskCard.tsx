@@ -1,7 +1,7 @@
-import { Card, CardContent, Checkbox, FormControlLabel, IconButton } from '@mui/material';
+
+import { Card, CardContent, Checkbox, FormControlLabel, IconButton, useTheme, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Task } from '@features/tasks/taskSlice';
-import styles from './TaskCard.module.css';
 
 interface TaskCardProps {
   task: Task;
@@ -9,22 +9,61 @@ interface TaskCardProps {
   onDelete: (id: string) => void;
 }
 
-export const TaskCard = ({ task, onToggle, onDelete }: TaskCardProps) => (
-  <Card className={styles.card}>
-    <CardContent className={styles.cardContent}>
-      <div className={styles.row}>
+export const TaskCard = ({ task, onToggle, onDelete }: TaskCardProps) => {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
+
+  return (
+    <Card
+      sx={{
+        backgroundColor: isDark ? '#28206f' : '#ffffff',
+        borderRadius: '20px',
+        boxShadow: isDark
+          ? '0 0 4px rgba(255,255,255,0.05)'
+          : '0 4px 12px rgba(0,0,0,0.06)',
+        mb: 2
+      }}
+    >
+      <CardContent
+        sx={{
+          padding: '16px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}
+      >
         <FormControlLabel
-          control={<Checkbox checked={task.done} onChange={() => onToggle(task.id)} />}
+          control={
+            <Checkbox
+              checked={task.done}
+              onChange={() => onToggle(task.id)}
+              sx={{
+                color: isDark ? '#90CAF9' : undefined
+              }}
+            />
+          }
           label={
-            <span className={styles.labelText}>
-              {task.title} <small>+{task.xp} XP</small>
-            </span>
+            <Typography
+              sx={{
+                fontWeight: 500,
+                color: isDark ? '#E3F2FD' : '#2C2C3E'
+              }}
+            >
+              {task.title} <small style={{ opacity: 0.7 }}>+{task.xp} XP</small>
+            </Typography>
           }
         />
-        <IconButton onClick={() => onDelete(task.id)} size="small" aria-label="Supprimer">
+        <IconButton
+          onClick={() => onDelete(task.id)}
+          size="small"
+          aria-label="Delete"
+          sx={{
+            color: isDark ? '#90CAF9' : '#333'
+          }}
+        >
           <DeleteIcon fontSize="small" />
         </IconButton>
-      </div>
-    </CardContent>
-  </Card>
-);
+      </CardContent>
+    </Card>
+  );
+};

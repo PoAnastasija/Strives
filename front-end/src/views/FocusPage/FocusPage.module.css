@@ -1,38 +1,53 @@
-  .timerSection, .videoSection {
-  padding: 1rem;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  background-color: white;
-} 
-.timerSection {
-  margin-bottom: 2rem;
+.card {
+  width: 180px;
+  height: 110px;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: var(--background-paper, #ffffff);
-  color: var(--text-primary, #000000);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-}
-
-.timerDisplay {
-  font-size: 2rem;
+  justify-content: center;
+  align-items: center;
   font-weight: bold;
-  margin: 0;
-  color: var(--text-primary, #000000);
+  font-size: 1.2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
-.controls {
-  display: flex;
-  gap: 1rem;
+.todoCard {
+  width: 100%;
+  max-width: 360px;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
-.videoSection {
-  padding: 1rem;
-  border-radius: 12px;
-  background-color: var(--background-paper, #ffffff);
-  color: var(--text-primary, #000000);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+.statCardYellow {
+  background-color: #FFE2B8;
+}
+
+.statCardBlue {
+  background-color: #6ED1D1;
+}
+
+.rewardCard {
+  background-color: #FFF3B0;
+}
+
+.claimButton {
+  background-color: #FFDC49;
+  color: #000;
+  font-weight: bold;
+  border-radius: 14px;
+  padding: 8px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.addTaskButton {
+  background-color: #BDA6FF;
+  color: white;
+  font-weight: bold;
+  border-radius: 14px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
 }

@@ -22,3 +22,11 @@
   color: var(--text-secondary, #666);
   margin-top: 0.5rem;
 }
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}

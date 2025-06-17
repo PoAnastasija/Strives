@@ -13,7 +13,7 @@ export default function Shop() {
   const [open, setOpen] = useState<boolean>(false);
   const handleClaimReward = (reward: Reward) => {
     if (gold < reward.cost) {
-      console.log("Not enough money");
+      console.log("Not enough coins");
       return;
     }
     spendGold(reward.cost);

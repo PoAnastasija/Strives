@@ -20,12 +20,26 @@
 .columnLayout {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
   gap: 3rem;
 }
 
 .addButton {
+  background-color: var(--button-add-bg, #7b61ff);
+  color: white;
+  font-weight: 600;
   text-transform: none;
   margin-top: 1.5rem;
+  padding: 12px 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  border: none;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: #684dd1;
 }
 
 h1 {
@@ -37,4 +51,8 @@ h1 {
 p {
   font-size: 1rem;
   color: inherit;
+}
+
+.companionCard {
+  margin-top: -70px;
 }
