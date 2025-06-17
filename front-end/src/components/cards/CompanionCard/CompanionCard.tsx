@@ -1,19 +1,21 @@
 import { XpProgressBar } from '@components/XpProgressBar/XpProgressBar';
-import monsterImg from '@assets/man.png';
+import BlobImg from '@assets/blob.png';
 import styles from './CompanionCard.module.css';
 import { useUserXp } from '@hooks/useUserXp';
 
 interface CompanionCardProps {
   xpMax: number;
-  xp: number;
 }
 
 export const CompanionCard = ({ xpMax }: CompanionCardProps) => {
-      const xp = useUserXp();
+  const xp = useUserXp();
+
   return (
-    <div className={styles.card}>
-      <img src={monsterImg} alt="Ton compagnon" className={styles.image} />
-      <XpProgressBar xp={xp} xpMax={xpMax} />
+    <div className={styles.wrapper}>
+      <img src={BlobImg} alt="Companion" className={styles.image} />
+      <div className={styles.progressContainer}>
+        <XpProgressBar xp={xp} xpMax={xpMax} />
+      </div>
     </div>
   );
 };

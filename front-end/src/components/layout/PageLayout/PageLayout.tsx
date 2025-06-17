@@ -7,7 +7,7 @@ import ThemeCSSVariables from '@theme/themeVariables';
 
 interface PageLayoutProps {
   children: ReactNode;
-};
+}
 
 export const PageLayout = ({ children }: PageLayoutProps) => {
   return (

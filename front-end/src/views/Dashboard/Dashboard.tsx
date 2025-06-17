@@ -27,7 +27,8 @@ export default function Dashboard() {
         className={styles.dashboardContainer}
         sx={{
           color: theme => theme.palette.text.primary,
-          backgroundColor: theme => theme.palette.background.default,
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(4px)',
         }}
       >
         <Box className={styles.header}>
@@ -37,7 +38,9 @@ export default function Dashboard() {
         <Grid container spacing={5} justifyContent="center">
           <Grid item xs={12} md={4}>
             <Box className={styles.columnLayout}>
-              <CompanionCard xp={xp} xpMax={xpMax} />
+              <Box sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
+                <CompanionCard xp={xp} xpMax={xpMax} />
+              </Box>
               <Box>
                 <TaskList />
                 <Button
@@ -64,12 +67,14 @@ export default function Dashboard() {
                 </Grid>
               </Grid>
               <Grid item>
-                <RewardCard
-                  title="Title"
-                  cost={100}
-                  onClaim={handleClaimReward}
-                  disabled={gold < 100}
-                />
+                <Box sx={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
+                  <RewardCard
+                    title="Title"
+                    cost={100}
+                    onClaim={handleClaimReward}
+                    disabled={gold < 100}
+                  />
+                </Box>
               </Grid>
             </Grid>
           </Grid>
