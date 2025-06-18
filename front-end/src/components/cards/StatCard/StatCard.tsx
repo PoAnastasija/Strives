@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 
 type Props = {
   title: string;
@@ -8,9 +8,9 @@ type Props = {
 export const StatCard = ({ title, value }: Props) => {
   const theme = useTheme();
   const mode = theme.palette.mode;
+
   const getBackgroundColor = () => {
     const t = title.toLowerCase();
-
     if (t === 'levels') return mode === 'dark' ? '#423C83' : '#FFE2B8';
     if (t === 'coins') return mode === 'dark' ? '#3f2180' : '#6ED1D1';
     return mode === 'dark' ? '#1E2A3A' : '#ffffff';
@@ -36,25 +36,10 @@ export const StatCard = ({ title, value }: Props) => {
             : '0 4px 12px rgba(0,0,0,0.06)',
       }}
     >
-      <Typography
-        variant="subtitle2"
-        sx={{
-          fontSize: '14px',
-          fontWeight: 600,
-          mb: 1,
-        }}
-      >
+      <p style={{ fontSize: '14px', fontWeight: 600, marginBottom: '0.5rem' }}>
         {title}
-      </Typography>
-      <Typography
-        variant="h5"
-        sx={{
-          fontSize: '28px',
-          fontWeight: 700,
-        }}
-      >
-        {value}
-      </Typography>
+      </p>
+      <h3 style={{ fontSize: '28px', fontWeight: 700, margin: 0 }}>{value}</h3>
     </Box>
   );
 };

@@ -1,5 +1,11 @@
-
-import { Card, CardContent, Checkbox, FormControlLabel, IconButton, useTheme, Typography } from '@mui/material';
+import {
+  Card,
+  CardContent,
+  Checkbox,
+  FormControlLabel,
+  IconButton,
+  useTheme,
+} from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Task } from '@features/tasks/taskSlice';
 
@@ -21,7 +27,7 @@ export const TaskCard = ({ task, onToggle, onDelete }: TaskCardProps) => {
         boxShadow: isDark
           ? '0 0 4px rgba(255,255,255,0.05)'
           : '0 4px 12px rgba(0,0,0,0.06)',
-        mb: 2
+        mb: 2,
       }}
     >
       <CardContent
@@ -29,7 +35,7 @@ export const TaskCard = ({ task, onToggle, onDelete }: TaskCardProps) => {
           padding: '16px',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
         }}
       >
         <FormControlLabel
@@ -38,19 +44,15 @@ export const TaskCard = ({ task, onToggle, onDelete }: TaskCardProps) => {
               checked={task.done}
               onChange={() => onToggle(task.id)}
               sx={{
-                color: isDark ? '#90CAF9' : undefined
+                color: isDark ? '#90CAF9' : undefined,
               }}
             />
           }
           label={
-            <Typography
-              sx={{
-                fontWeight: 500,
-                color: isDark ? '#E3F2FD' : '#2C2C3E'
-              }}
-            >
-              {task.title} <small style={{ opacity: 0.7 }}>+{task.xp} XP</small>
-            </Typography>
+            <span style={{ fontWeight: 500, color: isDark ? '#E3F2FD' : '#2C2C3E' }}>
+              {task.title}{' '}
+              <small style={{ opacity: 0.7 }}>+{task.xp} XP</small>
+            </span>
           }
         />
         <IconButton
@@ -58,7 +60,7 @@ export const TaskCard = ({ task, onToggle, onDelete }: TaskCardProps) => {
           size="small"
           aria-label="Delete"
           sx={{
-            color: isDark ? '#90CAF9' : '#333'
+            color: isDark ? '#90CAF9' : '#333',
           }}
         >
           <DeleteIcon fontSize="small" />

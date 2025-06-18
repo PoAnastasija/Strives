@@ -1,13 +1,4 @@
-import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  LinearProgress,
-  ToggleButtonGroup,
-  ToggleButton,
-  Paper
-} from '@mui/material';
+import { Box, Button, Grid, LinearProgress, ToggleButtonGroup, ToggleButton, Paper } from '@mui/material';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { PageLayout } from '@components/layout/PageLayout/PageLayout';
@@ -69,17 +60,10 @@ export default function QuestDashboard() {
   return (
     <PageLayout>
       <Box mb={4} textAlign="center">
-        <Typography variant="h4" fontWeight="bold" mb={1}>
-          Your Active Quests
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          color="text.secondary"
-          maxWidth="500px"
-          mx="auto"
-        >
+        <h1 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Your Active Quests</h1>
+        <p style={{ color: '#888', maxWidth: 500, margin: '0 auto' }}>
           Complete challenges to grow your companion and unlock rewards.
-        </Typography>
+        </p>
 
         <ToggleButtonGroup
           value={filter}
@@ -103,8 +87,7 @@ export default function QuestDashboard() {
               transition: 'background-color 0.2s ease',
               boxShadow: 'none',
               '&:hover': {
-                backgroundColor:
-                  theme.palette.mode === 'dark' ? '#2a2a50' : '#f0f0ff',
+                backgroundColor: theme.palette.mode === 'dark' ? '#2a2a50' : '#f0f0ff',
               },
             },
             '& .Mui-selected': {
@@ -135,24 +118,17 @@ export default function QuestDashboard() {
               sx={{
                 p: 3,
                 borderRadius: 4,
-                backgroundColor:
-                  theme.palette.mode === 'dark' ? '#1b164a' : '#ffffff',
+                backgroundColor: theme.palette.mode === 'dark' ? '#1b164a' : '#ffffff',
                 color: theme.palette.text.primary,
               }}
             >
               <Box display="flex" alignItems="center" gap={2} mb={1}>
-                <Typography fontSize={36}>{q.icon}</Typography>
+                <span style={{ fontSize: '2rem' }}>{q.icon}</span>
                 <Box>
-                  <Typography variant="h6" fontWeight="bold">
-                    {q.title}
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{ mt: 0.5 }}
-                  >
+                  <h3 style={{ fontWeight: 'bold', margin: 0 }}>{q.title}</h3>
+                  <p style={{ marginTop: 4, color: '#888', fontSize: '0.9rem' }}>
                     {q.description}
-                  </Typography>
+                  </p>
                 </Box>
               </Box>
 
@@ -171,15 +147,15 @@ export default function QuestDashboard() {
                     }}
                   />
                 </Box>
-                <Typography fontWeight={500} color={q.color}>
+                <span style={{ fontWeight: 500, color: q.color }}>
                   {Math.round(q.progress * 100)}%
-                </Typography>
+                </span>
               </Box>
 
               <Box display="flex" alignItems="center" gap={3} mt={1}>
                 <Box display="flex" gap={1.5} alignItems="center">
-                  <Typography color={q.color}>↗ +{q.xp} XP</Typography>
-                  <Typography color={q.color}>🪙 +{q.coins}</Typography>
+                  <span style={{ color: q.color }}>↗ +{q.xp} XP</span>
+                  <span style={{ color: q.color }}>🪙 +{q.coins}</span>
                 </Box>
                 <Box flexGrow={1} />
                 <Button

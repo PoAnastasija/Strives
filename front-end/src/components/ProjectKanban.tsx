@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import ProjectCard from '@components/cards/ProjectCard/ProjectCard';
 import { Project } from '@hooks/useProject';
@@ -38,22 +38,13 @@ export default function ProjectsKanban({ projects, onDragEnd, onEdit, onDelete }
               transition: 'background-color 0.3s ease',
             }}
           >
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              sx={{
-                fontWeight: 600,
-                color: theme.palette.text.primary,
-              }}
-            >
-              {label}
-            </Typography>
+            <h3 style={{ fontWeight: 600, marginBottom: '0.5rem', fontSize: '0.9rem' }}>{label}</h3>
             <Droppable droppableId={key}>
               {(provided) => (
                 <Box
                   ref={provided.innerRef}
                   {...provided.droppableProps}
-                  minHeight={120}
+                  minHeight={110}
                   sx={{
                     display: 'flex',
                     flexDirection: 'column',

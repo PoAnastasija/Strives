@@ -4,6 +4,7 @@ import Shop from '@views/Shop';
 import FocusPage from '@views/FocusPage/FocusPage';
 import ProjectPage from '@views/ProjectPage/ProjectPage';
 import QuestPage from '@views/QuestPage/QuestPage';
+import DressingRoomPage from '@views/DressinRoomPage/DressingRoomPage';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/focus" element={<FocusPage />} /> 
         <Route path="/projects" element={<ProjectPage />} /> 
         <Route path="/quests" element={<QuestPage />} />
+        <Route path="/dressing-room" element={<DressingRoomPage />} />
       </Routes>
     </Router>
   );

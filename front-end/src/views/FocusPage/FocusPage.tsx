@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Box, TextField, Button, List, ListItem, IconButton, Typography } from '@mui/material';
+import { Box, TextField, Button, List, ListItem, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -27,7 +27,7 @@ export default function FocusPage() {
     pause,
     reset,
     incrementMinutes,
-    decrementMinutes
+    decrementMinutes,
   } = useTimer(
     45,
     (delta) => {
@@ -51,7 +51,7 @@ export default function FocusPage() {
     url: videoUrl,
     setUrl: setVideoUrl,
     embedUrl: embeddedUrl,
-    handleAdd: handleAddVideo
+    handleAdd: handleAddVideo,
   } = useYoutubeEmbed();
 
   const {
@@ -59,39 +59,29 @@ export default function FocusPage() {
     newTask,
     setNewTask,
     handleAddTodo,
-    handleDeleteTodo
+    handleDeleteTodo,
   } = useTodoList();
 
   return (
     <PageLayout>
       <Box width="100%">
         <Box mb={4} textAlign="center">
-          <Typography variant="h4" fontWeight="bold" mb={1}>
-            Focus Mode
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            color="text.secondary"
-            maxWidth="500px"
-            mx="auto"
-          >
+          <h1 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Focus Mode</h1>
+          <p style={{ color: '#888', maxWidth: 500, margin: '0 auto' }}>
             Stay productive and earn rewards while focusing.
-          </Typography>
+          </p>
         </Box>
 
         <Box mb={3} textAlign="center">
-          <Typography fontWeight="bold">Coins: {coins}</Typography>
+          <strong>Coins: {coins}</strong>
         </Box>
 
         <Box mb={4}>
-          <Typography variant="h6" gutterBottom>
-            Daily Statistics
-          </Typography>
+          <h2 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: '1rem' }}>Daily Statistics</h2>
           <StatsChart data={stats} />
         </Box>
 
         <Box display="flex" flexWrap="wrap" gap={4} alignItems="flex-start">
-
           <Box
             flex="1"
             minWidth="320px"
@@ -103,15 +93,9 @@ export default function FocusPage() {
               boxShadow: 2,
             }}
           >
-            <Typography
-              variant="h3"
-              textAlign="center"
-              fontWeight="bold"
-              mb={2}
-            >
-              {String(minutes).padStart(2, '0')}:
-              {String(seconds).padStart(2, '0')}
-            </Typography>
+            <h2 style={{ fontSize: '2rem', textAlign: 'center', fontWeight: 'bold', marginBottom: '1rem' }}>
+              {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
+            </h2>
 
             <Box display="flex" justifyContent="center" mb={2}>
               <IconButton onClick={incrementMinutes} disabled={minutes >= 60}>
@@ -146,9 +130,7 @@ export default function FocusPage() {
               boxShadow: 2,
             }}
           >
-            <Typography variant="h6" gutterBottom>
-              Video Playlist
-            </Typography>
+            <h3 style={{ fontWeight: 600, marginBottom: '1rem' }}>Video Playlist</h3>
             <Box display="flex" gap={1} mb={2}>
               <TextField
                 label="YouTube URL"
@@ -178,9 +160,7 @@ export default function FocusPage() {
         </Box>
 
         <Box mt={5}>
-          <Typography variant="h6" gutterBottom>
-            To-Do List
-          </Typography>
+          <h3 style={{ fontWeight: 600, marginBottom: '1rem' }}>To-Do List</h3>
           <Box display="flex" gap={2} mb={2}>
             <TextField
               label="New task"

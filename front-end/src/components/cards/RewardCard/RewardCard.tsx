@@ -1,4 +1,4 @@
-import { Card, CardContent, Box, Button, useTheme, Typography, Link } from '@mui/material';
+import { Card, CardContent, Box, Button, useTheme, Link } from '@mui/material';
 import RedeemIcon from '@mui/icons-material/Redeem';
 
 interface RewardCardProps {
@@ -27,7 +27,7 @@ export const RewardCard = ({ title, cost, link, onClaim, disabled }: RewardCardP
           : '0 4px 12px rgba(0,0,0,0.06)',
         textAlign: 'center',
         color: isDark ? '#E3F2FD' : '#2C2C3E',
-        opacity: disabled ? 0.6 : 1
+        opacity: disabled ? 0.6 : 1,
       }}
     >
       <CardContent>
@@ -36,17 +36,15 @@ export const RewardCard = ({ title, cost, link, onClaim, disabled }: RewardCardP
             fontSize="large"
             sx={{
               fontSize: 40,
-              color: disabled ? (isDark ? '#666' : '#aaa') : '#7b61ff'
+              color: disabled ? (isDark ? '#666' : '#aaa') : '#7b61ff',
             }}
           />
 
-          <Typography variant="h6" sx={{ fontWeight: 700 }}>
-            {title}
-          </Typography>
+          <h3 style={{ fontWeight: 700, margin: 0 }}>{title}</h3>
 
-          <Typography variant="body2" sx={{ mb: 1 }}>
+          <p style={{ fontSize: '0.85rem', margin: '0.5rem 0' }}>
             Cost: {cost} 🪙
-          </Typography>
+          </p>
 
           {link && (
             <Link
@@ -78,7 +76,7 @@ export const RewardCard = ({ title, cost, link, onClaim, disabled }: RewardCardP
               '&:disabled': {
                 backgroundColor: isDark ? '#2E3D4C' : '#f0e2a4',
                 color: '#999',
-              }
+              },
             }}
           >
             Claim

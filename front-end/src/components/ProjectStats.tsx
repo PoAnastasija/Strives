@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import { Project } from '@hooks/useProject';
 
 type Props = { projects: Project[] };
@@ -19,13 +19,11 @@ export default function ProjectsStats({ projects }: Props) {
         color: theme.palette.text.primary,
       }}
     >
-      <Typography variant="subtitle1" gutterBottom sx={{ color: 'inherit' }}>
-        Stats
-      </Typography>
-      <Typography sx={{ color: 'inherit' }}>To Do: {countByStatus('todo')}</Typography>
-      <Typography sx={{ color: 'inherit' }}>In Progress: {countByStatus('in-progress')}</Typography>
-      <Typography sx={{ color: 'inherit' }}>Done: {countByStatus('done')}</Typography>
-      <Typography sx={{ mt: 1, color: 'inherit' }}>Total: {projects.length}</Typography>
+      <h4 style={{ marginBottom: '0.5rem', fontSize: '1.0rem' }}>Stats</h4>
+      <h4 style={{ fontSize: '0.9rem' }}>To Do: {countByStatus('todo')}</h4>
+      <h4 style={{ fontSize: '0.9rem' }}>In Progress: {countByStatus('in-progress')}</h4>
+      <h4 style={{ fontSize: '0.9rem' }}>Done: {countByStatus('done')}</h4>
+      <h4 style={{ fontSize: '0.9rem' }}>Total: {projects.length}</h4>
     </Box>
   );
 }
