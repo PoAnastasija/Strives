@@ -7,7 +7,7 @@ export const darkTheme = createTheme({
     secondary: { main: '#4DD0E1' },
     background: {
       default: '#0D1117',
-      paper: '#1C1F26'
+      paper: '#413A80'
     },
     text: {
       primary: '#E3F2FD',
@@ -20,21 +20,4 @@ export const darkTheme = createTheme({
   shape: {
     borderRadius: 12
   },
-  components: {
-    MuiPaper: {
-      styleOverrides: {
-        root: {
-          backgroundImage: 'none',
-        }
-      }
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          textTransform: 'none',
-          fontWeight: 'bold',
-        }
-      }
-    }
-  }
 });

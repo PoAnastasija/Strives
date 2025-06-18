@@ -2,7 +2,7 @@
   flex: 1 1 600px;
   min-width: 0;
   background-color: var(--background-paper, #ffffff);
-  color: var(--text-primary, #000000);
+  color: var(--text-primary, #413A80);
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
@@ -13,8 +13,8 @@
   min-width: 280px;
   max-width: 400px;
   background-color: var(--background-paper, #ffffff);
-  color: var(--text-primary, #000000);
+  color: var(--text-primary, #413A80);
   padding: 1rem;
   border-radius: 12px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(66, 60, 131, 0.1);
 }

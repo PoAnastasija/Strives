@@ -1,26 +1,19 @@
-import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  LinearProgress,
-  ToggleButtonGroup,
-  ToggleButton,
-  Avatar,
-  Paper
-} from '@mui/material';
+import { Box, Typography, Button, Grid, LinearProgress, ToggleButtonGroup, ToggleButton, Paper } from '@mui/material';
 import { useState } from 'react';
+import { useTheme } from '@mui/material/styles';
 import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 
 type Quest = {
   id: string;
   icon: string;
   title: string;
-    progress: number;
+  progress: number;
 };
 
 export default function QuestDashboard() {
+  const theme = useTheme();
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all');
+
   const quests: Quest[] = [
     { id: '1', icon: '🎯', title: '21-Day Focus Reset', progress: 7 / 21 },
     { id: '2', icon: '🧘', title: 'Mental Reset', progress: 0.3 },
@@ -35,19 +28,9 @@ export default function QuestDashboard() {
 
   return (
     <PageLayout>
-      <Paper elevation={3} sx={{ p: 3, borderRadius: 2, mb: 3 }}>
-        <Box display="flex" alignItems="center" justifyContent="space-between">
-          <Box display="flex" alignItems="center" gap={2}>
-            <Avatar
-              sx={{ width: 56, height: 56, fontSize: 32 }}
-            >
-              🐣
-            </Avatar>
-            <Typography variant="h5">Your Quest Companion</Typography>
-          </Box>
-          <Button variant="contained">➕ Add New Quest</Button>
-        </Box>
-      </Paper>
+      <Box mb={3}>
+        <Button variant="contained">Add New Quest</Button>
+      </Box>
 
       <Box mb={2}>
         <ToggleButtonGroup
@@ -66,7 +49,15 @@ export default function QuestDashboard() {
       <Grid container spacing={3}>
         {filteredQuests.map((q) => (
           <Grid item xs={12} sm={6} md={4} key={q.id}>
-            <Paper elevation={2} sx={{ p: 2, borderRadius: 2 }}>
+            <Paper
+              elevation={2}
+              sx={{
+                p: 2,
+                borderRadius: 2,
+                backgroundColor:
+                  theme.palette.mode === 'dark' ? '#332b76' : '#ffffff',
+              }}
+            >
               <Typography variant="h6" gutterBottom>
                 {q.icon} {q.title}
               </Typography>

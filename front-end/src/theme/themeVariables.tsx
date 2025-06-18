@@ -10,14 +10,14 @@ const ThemeCSSVariables = () => {
   useEffect(() => {
     const root = document.documentElement;
 
-    const isDark = theme === 'dark';
+    const isDark = theme === 'dark'
     const isFocus = theme === 'focus';
 
     const background = isFocus ? bgFocus : isDark ? bgDark : bgLight;
 
     root.style.setProperty('--bg-dashboard', `url(${background})`);
     root.style.setProperty('--background-default', isFocus ? '#d8f1ef' : isDark ? '#121212' : '#f7f6fc');
-    root.style.setProperty('--background-paper', isFocus ? '#e4f7f5' : isDark ? '#1f1f1f' : '#ffffff');
+    root.style.setProperty('--background-paper', isFocus ? '#e4f7f5' : isDark ? '#332b76' : '#ffffff');
     root.style.setProperty('--text-primary', isFocus ? '#0c3c3b' : isDark ? '#ffffff' : '#31265a');
     root.style.setProperty('--text-secondary', isFocus ? '#3c5c5c' : isDark ? '#aaaaaa' : '#444444');
   }, [theme]);

@@ -18,6 +18,7 @@ const statuses: { key: Project['status']; label: string }[] = [
 
 export default function ProjectsKanban({ projects, onDragEnd, onEdit, onDelete }: Props) {
   const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -26,13 +27,12 @@ export default function ProjectsKanban({ projects, onDragEnd, onEdit, onDelete }
           <Box
             key={key}
             sx={{
-              width: 193,
-              backgroundColor:
-                theme.palette.mode === 'dark' ? '#2b2b2b' : '#E5E5FF',
+              width: 187,
+              backgroundColor: isDark ? '#423c83' : '#E5E5FF',
               color: theme.palette.text.primary,
               p: 1.5,
               borderRadius: 2,
-              boxShadow: theme.palette.mode === 'dark'
+              boxShadow: isDark
                 ? '0 0 6px rgba(255,255,255,0.1)'
                 : '0 2px 4px rgba(0,0,0,0.1)',
               transition: 'background-color 0.3s ease',
