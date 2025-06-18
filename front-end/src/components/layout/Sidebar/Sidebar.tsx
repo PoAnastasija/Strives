@@ -1,11 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import {
-  HomeRounded,
-  EmojiEventsRounded,
-  ShoppingBagRounded,
-  AccessTimeRounded,
-  FolderRounded,
-} from '@mui/icons-material';
+import { HomeRounded, EmojiEventsRounded, ShoppingBagRounded, AccessTimeRounded, FolderRounded } from '@mui/icons-material';
 import styles from './Sidebar.module.css';
 
 export const Sidebar = () => {
@@ -37,5 +31,3 @@ export const Sidebar = () => {
     </aside>
   );
 };
-
-

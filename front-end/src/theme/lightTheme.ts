@@ -8,6 +8,6 @@ export const lightTheme = createTheme({
     background: { default: '#fcfbfe', paper: '#ffffff' },
     text: { primary: '#1a1a1a', secondary: '#666' },
   },
-  typography: { fontFamily: 'Fredoka, Roboto, sans-serif' },
+  typography: { fontFamily: 'Inter, Roboto, sans-serif' },
   shape: { borderRadius: 12 },
 });

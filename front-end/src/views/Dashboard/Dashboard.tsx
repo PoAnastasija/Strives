@@ -53,7 +53,7 @@ export default function Dashboard() {
               </Grid>
               <Grid item>
                 <RewardCard
-                  title="Title"
+                  title="Reward"
                   cost={100}
                   onClaim={handleClaimReward}
                   disabled={gold < 100}

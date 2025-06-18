@@ -1,11 +1,11 @@
 .sidebar {
-  width: 260px;
+  width: 180px;
   margin: 1.5rem;
   padding: 2rem 1.25rem;
   border-radius: 2.5rem;
   display: flex;
   flex-direction: column;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--sidebar-bg);
   color: var(--sidebar-text);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);

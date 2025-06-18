@@ -4,8 +4,8 @@ import { RewardStore } from '@types/reward';
 
 export const useRewardStore = create<RewardStore>((set) => ({
   rewards: [
-    { id: '1', title: 'Casque audio', cost: 50 },
-    { id: '2', title: 'Cours udemy', cost: 100 },
+    { id: '1', title: 'Reward', cost: 50 },
+    { id: '2', title: 'Reward', cost: 100 },
   ],
   addReward: (reward) =>
     set((state) => ({

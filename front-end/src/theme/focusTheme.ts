@@ -8,6 +8,6 @@ export const focusTheme = createTheme({
     background: { default: '#f1f5ff', paper: '#ffffff' },
     text: { primary: '#2c2c2c', secondary: '#666' },
   },
-  typography: { fontFamily: 'Fredoka, Roboto, sans-serif' },
+  typography: { fontFamily: 'Inter, Roboto, sans-serif' },
   shape: { borderRadius: 16 },
 });

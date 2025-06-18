@@ -15,7 +15,7 @@ export const darkTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Fredoka, Roboto, sans-serif'
+    fontFamily: 'Inter, Roboto, sans-serif'
   },
   shape: {
     borderRadius: 12
