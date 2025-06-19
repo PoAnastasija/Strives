@@ -118,6 +118,7 @@ export default function QuestDashboard() {
               sx={{
                 p: 3,
                 borderRadius: 4,
+                minWidth: 493,
                 backgroundColor: theme.palette.mode === 'dark' ? '#1b164a' : '#ffffff',
                 color: theme.palette.text.primary,
               }}
