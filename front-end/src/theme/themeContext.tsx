@@ -2,14 +2,12 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { lightTheme } from './lightTheme';
 import { darkTheme } from './darkTheme';
-import { focusTheme } from './focusTheme';
 
-type ThemeName = 'light' | 'dark' | 'focus';
+type ThemeName = 'light' | 'dark';
 
 const themes = {
   light: lightTheme,
   dark: darkTheme,
-  focus: focusTheme,
 };
 
 interface ThemeContextValue {
@@ -31,7 +29,9 @@ export function CustomThemeProvider({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     const saved = localStorage.getItem('theme') as ThemeName;
-    if (saved) setThemeState(saved);
+    if (saved && (saved === 'light' || saved === 'dark')) {
+      setThemeState(saved);
+    }
   }, []);
 
   const setTheme = (name: ThemeName) => {
@@ -40,7 +40,7 @@ export function CustomThemeProvider({ children }: { children: React.ReactNode })
   };
 
   const toggleTheme = () => {
-    const next = theme === 'light' ? 'dark' : theme === 'dark' ? 'focus' : 'light';
+    const next = theme === 'light' ? 'dark' : 'light';
     setTheme(next);
   };
 
