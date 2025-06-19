@@ -61,7 +61,7 @@ export default function QuestDashboard() {
     <PageLayout>
       <Box mb={4} textAlign="center">
         <h1 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Your Active Quests</h1>
-        <p style={{ color: '#888', maxWidth: 500, margin: '0 auto' }}>
+        <p style={{ maxWidth: 500, margin: '0 auto' }}>
           Complete challenges to grow your companion and unlock rewards.
         </p>
 

@@ -7,14 +7,31 @@
 }
 
 .floatingGroup {
-  animation: float 3s ease-in-out infinite;
+  position: relative;
   width: 200px;
   height: 250px;
-  position: relative;
+  animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
   100% { transform: translateY(0); }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  left: 0;
+}
+
+.hat {
+  top: -55px;
+  z-index: 2;
+}
+
+.companion {
+  top: 50px;
+  z-index: 1;
 }

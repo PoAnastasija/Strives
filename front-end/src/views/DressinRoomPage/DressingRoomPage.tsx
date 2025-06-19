@@ -1,10 +1,13 @@
 import { Box, Button, Grid, Paper, Tooltip } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import BlobBase from '@assets/blob.png';
 import HatBlack from '@assets/black_hat.png';
 import HatBlue from '@assets/blue_hat.png';
 import HatBrown from '@assets/brown_hat.png';
+
+import { useCompanionHatStore } from '@features/companion/hatStore';
 import styles from './DressingRoom.module.css';
 
 type HatOption = 'none' | 'black' | 'blue' | 'brown';
@@ -16,7 +19,7 @@ const hatImages: Record<HatOption, string | null> = {
   brown: HatBrown,
 };
 
-// Niveau du joueur (à connecter plus tard)
+// Niveau du joueur (voir pour le lier avec les levels du user)
 const playerLevel = 7;
 
 const isHatUnlocked = (hat: HatOption, level: number) => {
@@ -27,7 +30,13 @@ const isHatUnlocked = (hat: HatOption, level: number) => {
 
 export default function DressingRoomPage() {
   const [selectedHat, setSelectedHat] = useState<HatOption>('none');
+  const setHat = useCompanionHatStore((state) => state.setHat);
   const navigate = useNavigate();
+
+  const handleApply = () => {
+    setHat(selectedHat);
+    navigate('/');
+  };
 
   return (
     <Box
@@ -36,7 +45,6 @@ export default function DressingRoomPage() {
         backgroundImage: 'var(--bg-dashboard)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
         padding: 4,
         textAlign: 'center',
       }}
@@ -47,10 +55,8 @@ export default function DressingRoomPage() {
         </Button>
       </Box>
 
-      <h1 style={{ marginBottom: '1rem' }}>Dressing Room</h1>
-      <p style={{ marginBottom: '2rem' }}>
-        Customize your Blob Companion with accessories.
-      </p>
+      <h1>Dressing Room</h1>
+      <p>Customize your Blob Companion with accessories.</p>
 
       <Box className={styles.wrapper}>
         <Box className={styles.floatingGroup}>
@@ -58,27 +64,14 @@ export default function DressingRoomPage() {
             <img
               src={hatImages[selectedHat]!}
               alt="Hat"
-              style={{
-                position: 'absolute',
-                top: -55,
-                left: 0,
-                width: '100%',
-                zIndex: 2,
-                animation: 'float 3s ease-in-out infinite',
-              }}
+              className={`${styles.image} ${styles.hat}`}
             />
           )}
           <img
             src={BlobBase}
             alt="Blob Companion"
-            style={{
-              width: '100%',
-              position: 'absolute',
-              top: 50,
-              left: 0,
-              zIndex: 1,
-              animation: 'float 3s ease-in-out infinite',
-            }}
+            className={styles.image}
+            style={{ top: 50, zIndex: 1 }}
           />
         </Box>
       </Box>
@@ -87,7 +80,6 @@ export default function DressingRoomPage() {
       <Grid container spacing={2} justifyContent="center">
         {(['none', 'black', 'blue', 'brown'] as HatOption[]).map((option) => {
           const unlocked = isHatUnlocked(option, playerLevel);
-
           const tooltip =
             option === 'blue' && !unlocked
               ? 'Reach level 5 to unlock this hat'
@@ -107,9 +99,7 @@ export default function DressingRoomPage() {
                     cursor: unlocked ? 'pointer' : 'not-allowed',
                     opacity: unlocked ? 1 : 0.4,
                   }}
-                  onClick={() => {
-                    if (unlocked) setSelectedHat(option);
-                  }}
+                  onClick={() => unlocked && setSelectedHat(option)}
                 >
                   {option === 'none' ? (
                     <Box
@@ -139,10 +129,9 @@ export default function DressingRoomPage() {
       <Box mt={4}>
         <Button
           variant="contained"
-          onClick={() => alert(`Hat "${selectedHat}" applied!`)}
-          disabled={selectedHat === 'none'}
+          onClick={handleApply}
         >
-          Apply Hat
+          Apply
         </Button>
       </Box>
     </Box>

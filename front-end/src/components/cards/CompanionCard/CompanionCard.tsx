@@ -1,20 +1,42 @@
 import { XpProgressBar } from '@components/XpProgressBar/XpProgressBar';
 import BlobImg from '@assets/blob.png';
-import styles from './CompanionCard.module.css';
+import HatBlack from '@assets/black_hat.png';
+import HatBlue from '@assets/blue_hat.png';
+import HatBrown from '@assets/brown_hat.png';
+
 import { useUserXp } from '@hooks/useUserXp';
+import { useCompanionHatStore } from '@features/companion/hatStore';
 import clsx from 'clsx';
+import styles from './CompanionCard.module.css';
 
 interface CompanionCardProps {
   xpMax: number;
   className?: string;
 }
 
+const hatImages: Record<string, string> = {
+  black: HatBlack,
+  blue: HatBlue,
+  brown: HatBrown,
+};
+
 export const CompanionCard = ({ xpMax, className }: CompanionCardProps) => {
   const xp = useUserXp();
+  const hat = useCompanionHatStore((state) => state.hat);
 
   return (
     <div className={clsx(styles.wrapper, className)}>
-      <img src={BlobImg} alt="Companion" className={styles.image} />
+      <div className={styles.floatingGroup}>
+        {hat !== 'none' && hatImages[hat] && (
+          <img
+            src={hatImages[hat]}
+            alt={`${hat} hat`}
+            className={clsx(styles.image, styles.hat)}
+          />
+        )}
+        <img src={BlobImg} alt="Companion" className={styles.image} />
+      </div>
+
       <div className={styles.progressContainer}>
         <XpProgressBar xp={xp} xpMax={xpMax} />
       </div>
