@@ -6,6 +6,7 @@
 }
 
 .floatingGroup {
+  top: 30px;
   position: relative;
   width: 180px;
   height: 180px;
@@ -21,7 +22,7 @@
 }
 
 .hat {
-  top: -92px;
+  top: -101px;
   z-index: 2;
 }
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import bgLight from '@assets/focus_background.png';
-import bgDark from '@assets/dark_mode_background.png';
+import bgLight from '@assets/background/light_mode_background.png';
+import bgDark from '@assets/background/dark_mode_background.png';
 import { useThemeSwitcher } from '@theme/themeContext';
 
 const ThemeCSSVariables = () => {

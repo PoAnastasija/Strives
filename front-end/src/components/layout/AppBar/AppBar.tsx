@@ -4,7 +4,7 @@ import { useThemeSwitcher } from '@theme/themeContext';
 import { useNavigate } from 'react-router-dom';
 import styles from './AppBar.module.css';
 
-import BlackHatCompanion from '@assets/blob_black_hat.png';
+import BlackHatCompanion from '@assets/blob_blue_hat.png';
 
 export const TopAppBar = () => {
   const { theme: currentMode, toggleTheme } = useThemeSwitcher();

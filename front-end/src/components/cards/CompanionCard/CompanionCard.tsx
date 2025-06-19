@@ -1,8 +1,9 @@
 import { XpProgressBar } from '@components/XpProgressBar/XpProgressBar';
 import BlobImg from '@assets/blob.png';
-import HatBlack from '@assets/black_hat.png';
-import HatBlue from '@assets/blue_hat.png';
-import HatBrown from '@assets/brown_hat.png';
+import HatBlack from '@assets/hats/black_hat.png'
+import HatBlue from '@assets/hats/blue_hat.png';
+import HatBrown from '@assets/hats/brown_hat.png';
+import HatMagic from '@assets/hats/magic_hat.png';
 
 import { useUserXp } from '@hooks/useUserXp';
 import { useCompanionHatStore } from '@features/companion/hatStore';
@@ -18,6 +19,7 @@ const hatImages: Record<string, string> = {
   black: HatBlack,
   blue: HatBlue,
   brown: HatBrown,
+  magic: HatMagic,
 };
 
 export const CompanionCard = ({ xpMax, className }: CompanionCardProps) => {

@@ -3,28 +3,31 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import BlobBase from '@assets/blob.png';
-import HatBlack from '@assets/black_hat.png';
-import HatBlue from '@assets/blue_hat.png';
-import HatBrown from '@assets/brown_hat.png';
+import HatBlack from '@assets/hats/black_hat.png';
+import HatBlue from '@assets/hats/blue_hat.png';
+import HatBrown from '@assets/hats/brown_hat.png';
+import HatMagic from '@assets/hats/magic_hat.png';
 
 import { useCompanionHatStore } from '@features/companion/hatStore';
 import styles from './DressingRoom.module.css';
 
-type HatOption = 'none' | 'black' | 'blue' | 'brown';
+type HatOption = 'none' | 'black' | 'blue' | 'brown' | 'magic';
 
 const hatImages: Record<HatOption, string | null> = {
   none: null,
   black: HatBlack,
   blue: HatBlue,
   brown: HatBrown,
+  magic: HatMagic,
 };
 
 // Niveau du joueur (voir pour le lier avec les levels du user)
-const playerLevel = 7;
+const playerLevel = 20;
 
 const isHatUnlocked = (hat: HatOption, level: number) => {
   if (hat === 'brown') return level >= 10;
   if (hat === 'blue') return level >= 5;
+  if (hat === 'magic') return level >= 20;
   return true;
 };
 
@@ -78,13 +81,12 @@ export default function DressingRoomPage() {
 
       <h2>Choose a Hat</h2>
       <Grid container spacing={2} justifyContent="center">
-        {(['none', 'black', 'blue', 'brown'] as HatOption[]).map((option) => {
+        {(['none', 'black', 'blue', 'brown', 'magic'] as HatOption[]).map((option) => {
           const unlocked = isHatUnlocked(option, playerLevel);
           const tooltip =
-            option === 'blue' && !unlocked
-              ? 'Reach level 5 to unlock this hat'
-              : option === 'brown' && !unlocked
-              ? 'Reach level 10 to unlock this hat'
+            option === 'blue' && !unlocked ? 'Reach level 5 to unlock this hat'
+              : option === 'brown' && !unlocked ? 'Reach level 10 to unlock this hat'
+              : option === 'magic' && !unlocked ? 'Reach level 20 to unlock this hat'
               : '';
 
           return (
