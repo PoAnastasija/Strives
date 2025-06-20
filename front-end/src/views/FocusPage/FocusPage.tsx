@@ -8,6 +8,7 @@ import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 import { useTimer } from '@hooks/useTimer';
 import { useTodoList } from '@hooks/useTodoList';
 import RainSound from '@assets/sounds/rain.mp3';
+import RainVideo from '@assets/videos/rain_video.mp4';
 
 export default function FocusPage() {
   const theme = useTheme();
@@ -120,35 +121,35 @@ export default function FocusPage() {
     }
   }, [soundOption]);
 
-  // ✅ Optionnel : activer automatiquement le son si vidéo "rain_video" est sélectionnée
   useEffect(() => {
-    if (bgOption === 'rain_video') {
+    if (bgOption === 'rain') {
       setSoundOption('rain');
     }
   }, [bgOption]);
 
   return (
     <PageLayout>
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          objectFit: 'cover',
-          zIndex: -1,
-          opacity: 0.2,
-          pointerEvents: 'none',
-        }}
-      >
-        <source src={`/videos/${bgOption}.mp4`} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      {bgOption === 'rain' && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            objectFit: 'cover',
+            zIndex: -1,
+            opacity: 0.2,
+            pointerEvents: 'none',
+          }}
+        >
+          <source src={RainVideo} type="video/mp4" />
+        </video>
+      )}
 
       <Box mb={4} textAlign="center">
         <h1 style={{ fontWeight: 'bold' }}>Focus Mode</h1>
@@ -159,7 +160,7 @@ export default function FocusPage() {
         <Box mt={3} display="flex" justifyContent="center" gap={2}>
           <Select value={bgOption} onChange={(e) => setBgOption(e.target.value)} size="small">
             <MenuItem value="forest">Background Video: Forest</MenuItem>
-            <MenuItem value="rain_video">Background Video: Rain</MenuItem>
+            <MenuItem value="rain">Background Video: Rain</MenuItem>
           </Select>
           <Select value={soundOption} onChange={(e) => setSoundOption(e.target.value)} size="small">
             <MenuItem value="none">Ambient Sound: None</MenuItem>
@@ -179,24 +180,10 @@ export default function FocusPage() {
           zIndex: 1000,
         }}
       >
-        <Button
-          variant="contained"
-          onClick={() => setShowTimer(prev => !prev)}
-          sx={{
-            width: 130,
-            textTransform: 'none',
-          }}
-        >
+        <Button variant="contained" onClick={() => setShowTimer(prev => !prev)} sx={{ width: 130 }}>
           {showTimer ? 'Hide Timer' : 'Show Timer'}
         </Button>
-        <Button
-          variant="contained"
-          onClick={() => setShowTodo(prev => !prev)}
-          sx={{
-            width: 130,
-            textTransform: 'none',
-          }}
-        >
+        <Button variant="contained" onClick={() => setShowTodo(prev => !prev)} sx={{ width: 130 }}>
           {showTodo ? 'Hide To-Do' : 'Show To-Do'}
         </Button>
       </Box>
@@ -292,3 +279,4 @@ export default function FocusPage() {
     </PageLayout>
   );
 }
+

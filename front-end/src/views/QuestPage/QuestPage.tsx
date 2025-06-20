@@ -2,6 +2,7 @@ import { Box, Button, Grid, LinearProgress, ToggleButtonGroup, ToggleButton, Pap
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { PageLayout } from '@components/layout/PageLayout/PageLayout';
+import { useNavigate } from 'react-router-dom';
 
 type Quest = {
   id: string;
@@ -17,7 +18,7 @@ type Quest = {
 export default function QuestDashboard() {
   const theme = useTheme();
   const [filter, setFilter] = useState<'all' | 'active' | 'completed'>('all');
-
+  const navigate = useNavigate();
   const quests: Quest[] = [
     {
       id: '1',
@@ -31,9 +32,9 @@ export default function QuestDashboard() {
     },
     {
       id: '2',
-      icon: '💪',
-      title: 'Morning Push-Ups',
-      description: 'Do 5 push-ups every morning for one week.',
+      icon: '📖',
+      title: 'Read every-day',
+      description: 'Read for 30 min a day, until it become a habit.',
       progress: 0.4,
       xp: 40,
       coins: 10,
@@ -43,7 +44,7 @@ export default function QuestDashboard() {
       id: '3',
       icon: '🎯',
       title: '21-Day Focus Reset',
-      description: 'Focus 25 minutes a day for 21 days.',
+      description: 'Focus 3h a day for 21 days.',
       progress: 7 / 21,
       xp: 100,
       coins: 50,
@@ -106,10 +107,6 @@ export default function QuestDashboard() {
         </ToggleButtonGroup>
       </Box>
 
-      <Box mb={3} textAlign="center">
-        <Button variant="contained">Add New Quest</Button>
-      </Box>
-
       <Grid container spacing={3}>
         {filteredQuests.map((q) => (
           <Grid item xs={12} md={6} key={q.id}>
@@ -161,6 +158,7 @@ export default function QuestDashboard() {
                 <Box flexGrow={1} />
                 <Button
                   variant="contained"
+                  onClick={() => navigate(`/quests/${q.id}`)}
                   sx={{
                     borderRadius: 3,
                     fontWeight: 'bold',
@@ -172,7 +170,7 @@ export default function QuestDashboard() {
                     },
                   }}
                 >
-                  Continue
+                  Start
                 </Button>
               </Box>
             </Paper>
