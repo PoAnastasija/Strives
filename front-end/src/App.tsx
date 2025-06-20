@@ -5,7 +5,7 @@ import FocusPage from '@views/FocusPage/FocusPage';
 import ProjectPage from '@views/ProjectPage/ProjectPage';
 import QuestPage from '@views/QuestPage/QuestPage';
 import DressingRoomPage from '@views/DressinRoomPage/DressingRoomPage';
-import QuestDetailsPage from '@views/QuestDetailsPage/QuestDeatilsPage';
+import QuestDetailsPage from '@views/QuestDetailsPage/QuestDetailsPage';
 
 function App() {
   return (

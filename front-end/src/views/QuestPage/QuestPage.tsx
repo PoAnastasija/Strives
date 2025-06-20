@@ -33,7 +33,7 @@ export default function QuestDashboard() {
     {
       id: '2',
       icon: '📖',
-      title: 'Read every-day',
+      title: 'Read every-day for 14 days',
       description: 'Read for 30 min a day, until it become a habit.',
       progress: 0.4,
       xp: 40,

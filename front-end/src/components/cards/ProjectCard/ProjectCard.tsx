@@ -8,29 +8,49 @@ type Props = {
   project: Project;
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
+  dragHandleProps?: any;
 };
 
-export default function ProjectCard({ project, onEdit, onDelete }: Props) {
+export default function ProjectCard({ project, onEdit, onDelete, dragHandleProps }: Props) {
   return (
     <Card variant="outlined" sx={{ mb: 1 }}>
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="start">
-          <h6 style={{ margin: 0 }}>{project.title}</h6>
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
+          <Box
+            {...dragHandleProps}
+            sx={{ cursor: 'grab', '&:active': { cursor: 'grabbing' } }}
+          >
+            <h6 style={{ margin: 0 }}>{project.title}</h6>
+          </Box>
+
           <Box>
             {project.link && (
               <Link
                 href={project.link}
                 target="_blank"
                 rel="noopener"
+                onClick={e => e.stopPropagation()}
                 sx={{ mr: 1 }}
               >
                 <LaunchIcon fontSize="small" />
               </Link>
             )}
-            <IconButton size="small" onClick={() => onEdit(project.id)}>
+            <IconButton
+              size="small"
+              onClick={e => {
+                e.stopPropagation();
+                onEdit(project.id);
+              }}
+            >
               <EditIcon fontSize="small" />
             </IconButton>
-            <IconButton size="small" onClick={() => onDelete(project.id)}>
+            <IconButton
+              size="small"
+              onClick={e => {
+                e.stopPropagation();
+                onDelete(project.id);
+              }}
+            >
               <DeleteIcon fontSize="small" />
             </IconButton>
           </Box>
