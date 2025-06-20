@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Box, TextField, Button, IconButton, List, ListItem, MenuItem, Select } from '@mui/material';
+import {
+  Box, TextField, Button, IconButton, List, ListItem, MenuItem, Select
+} from '@mui/material';
 import { Pause, PlayArrow, Delete } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import { PageLayout } from '@components/layout/PageLayout/PageLayout';
@@ -17,6 +19,9 @@ export default function FocusPage() {
   const sourceRef = useRef<MediaElementAudioSourceNode | null>(null);
   const [bgOption, setBgOption] = useState('forest');
   const [soundOption, setSoundOption] = useState('none');
+  const [showTimer, setShowTimer] = useState(false);
+  const [showTodo, setShowTodo] = useState(false);
+
   const {
     minutes,
     seconds,
@@ -104,6 +109,7 @@ export default function FocusPage() {
       gainNodeRef.current = gainNode;
       sourceRef.current = source;
     }
+
     if (soundOption === 'rain') {
       audio.loop = true;
       audio.muted = false;
@@ -114,8 +120,36 @@ export default function FocusPage() {
     }
   }, [soundOption]);
 
+  // ✅ Optionnel : activer automatiquement le son si vidéo "rain_video" est sélectionnée
+  useEffect(() => {
+    if (bgOption === 'rain_video') {
+      setSoundOption('rain');
+    }
+  }, [bgOption]);
+
   return (
     <PageLayout>
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          objectFit: 'cover',
+          zIndex: -1,
+          opacity: 0.2,
+          pointerEvents: 'none',
+        }}
+      >
+        <source src={`/videos/${bgOption}.mp4`} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
       <Box mb={4} textAlign="center">
         <h1 style={{ fontWeight: 'bold' }}>Focus Mode</h1>
         <p style={{ maxWidth: 500, margin: '0 auto' }}>
@@ -125,6 +159,7 @@ export default function FocusPage() {
         <Box mt={3} display="flex" justifyContent="center" gap={2}>
           <Select value={bgOption} onChange={(e) => setBgOption(e.target.value)} size="small">
             <MenuItem value="forest">Background Video: Forest</MenuItem>
+            <MenuItem value="rain_video">Background Video: Rain</MenuItem>
           </Select>
           <Select value={soundOption} onChange={(e) => setSoundOption(e.target.value)} size="small">
             <MenuItem value="none">Ambient Sound: None</MenuItem>
@@ -134,89 +169,124 @@ export default function FocusPage() {
       </Box>
 
       <Box
-        ref={popupRef}
-        onMouseDown={(e) => handleMouseDown(e, 'timer')}
         sx={{
-          position: 'absolute',
-          top: popupPos.y,
-          left: popupPos.x,
-          width: 300,
-          p: 3,
-          borderRadius: 3,
-          cursor: 'grab',
-          zIndex: 999,
-          backgroundColor: theme.palette.mode === 'dark' ? '#1b164a' : '#fff',
-          boxShadow: 4,
+          position: 'fixed',
+          bottom: 600,
+          right: 50,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+          zIndex: 1000,
         }}
       >
-        <h2 style={{ marginBottom: '1rem' }}>Focus Timer</h2>
-
-        <Box sx={{ fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', mb: 2 }}>
-          {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
-        </Box>
-
-        <Box display="flex" justifyContent="center" mb={2}>
-          <Button
-            variant="contained"
-            onClick={isRunning ? pause : start}
-            startIcon={isRunning ? <Pause /> : <PlayArrow />}
-            sx={{
-              px: 4,
-              py: 1,
-              borderRadius: '50px',
-              fontWeight: 'bold',
-              backgroundColor: '#BDA6FF',
-              color: '#fff',
-            }}
-          >
-            {isRunning ? 'Pause' : 'Start'}
-          </Button>
-        </Box>
+        <Button
+          variant="contained"
+          onClick={() => setShowTimer(prev => !prev)}
+          sx={{
+            width: 130,
+            textTransform: 'none',
+          }}
+        >
+          {showTimer ? 'Hide Timer' : 'Show Timer'}
+        </Button>
+        <Button
+          variant="contained"
+          onClick={() => setShowTodo(prev => !prev)}
+          sx={{
+            width: 130,
+            textTransform: 'none',
+          }}
+        >
+          {showTodo ? 'Hide To-Do' : 'Show To-Do'}
+        </Button>
       </Box>
 
-      <Box
-        ref={todoPopupRef}
-        onMouseDown={(e) => handleMouseDown(e, 'todo')}
-        sx={{
-          position: 'absolute',
-          top: todoPopupPos.y,
-          left: todoPopupPos.x,
-          width: 300,
-          p: 3,
-          borderRadius: 3,
-          cursor: 'grab',
-          zIndex: 998,
-          backgroundColor: theme.palette.mode === 'dark' ? '#1b164a' : '#fff',
-          boxShadow: 4,
-        }}
-      >
-        <h2 style={{ marginBottom: '1rem' }}>To-Do List</h2>
-        <List>
-          {todos.map((task, index) => (
-            <ListItem
-              key={index}
-              secondaryAction={
-                <IconButton onClick={() => handleDeleteTodo(index)} color="inherit">
-                  <Delete />
-                </IconButton>
-              }
+      {showTimer && (
+        <Box
+          ref={popupRef}
+          onMouseDown={(e) => handleMouseDown(e, 'timer')}
+          sx={{
+            position: 'absolute',
+            top: popupPos.y,
+            left: popupPos.x,
+            width: 300,
+            p: 3,
+            borderRadius: 3,
+            cursor: 'grab',
+            zIndex: 999,
+            backgroundColor: theme.palette.mode === 'dark' ? '#1b164a' : '#fff',
+            boxShadow: 4,
+          }}
+        >
+          <h2 style={{ marginBottom: '1rem' }}>Focus Timer</h2>
+          <Box sx={{ fontSize: '2rem', fontWeight: 'bold', textAlign: 'center', mb: 1 }}>
+            {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
+          </Box>
+          <Box display="flex" justifyContent="center" mb={2}>
+            <Button
+              variant="contained"
+              onClick={isRunning ? pause : start}
+              startIcon={isRunning ? <Pause /> : <PlayArrow />}
+              sx={{
+                px: 4,
+                py: 1,
+                borderRadius: '50px',
+                fontWeight: 'bold',
+                backgroundColor: '#BDA6FF',
+                color: '#fff',
+              }}
             >
-              {task}
-            </ListItem>
-          ))}
-        </List>
-        <Box display="flex" gap={1} mt={2}>
-          <TextField
-            variant="outlined"
-            label="New Task"
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-            fullWidth
-            size="small"
-          />
-          <Button onClick={handleAddTodo} variant="contained">Add</Button>
+              {isRunning ? 'Pause' : 'Start'}
+            </Button>
+          </Box>
         </Box>
-      </Box>
+      )}
+
+      {showTodo && (
+        <Box
+          ref={todoPopupRef}
+          onMouseDown={(e) => handleMouseDown(e, 'todo')}
+          sx={{
+            position: 'absolute',
+            top: todoPopupPos.y,
+            left: todoPopupPos.x,
+            width: 300,
+            p: 3,
+            borderRadius: 3,
+            cursor: 'grab',
+            zIndex: 998,
+            backgroundColor: theme.palette.mode === 'dark' ? '#1b164a' : '#fff',
+            boxShadow: 4,
+          }}
+        >
+          <h2 style={{ marginBottom: '1rem' }}>To-Do List</h2>
+          <List>
+            {todos.map((task, index) => (
+              <ListItem
+                key={index}
+                secondaryAction={
+                  <IconButton onClick={() => handleDeleteTodo(index)} color="inherit">
+                    <Delete />
+                  </IconButton>
+                }
+              >
+                {task}
+              </ListItem>
+            ))}
+          </List>
+          <Box display="flex" gap={1} mt={2}>
+            <TextField
+              variant="outlined"
+              label="New Task"
+              value={newTask}
+              onChange={(e) => setNewTask(e.target.value)}
+              fullWidth
+              size="small"
+            />
+            <Button onClick={handleAddTodo} variant="contained">Add</Button>
+          </Box>
+        </Box>
+      )}
 
       <audio ref={audioRef} src={RainSound} />
     </PageLayout>
