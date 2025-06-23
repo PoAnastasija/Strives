@@ -32,15 +32,14 @@ export default function FocusPage() {
   } = useTimer(
     25,
     (delta) => {
+      //ajouter les +5 de pièces pour 15min et + 10 pour 25min
       elapsedRef.current += delta;
       if (elapsedRef.current >= 15 && !rewarded15Ref.current) {
-        // addCoins(5); <-- addCoins should be defined or imported
         rewarded15Ref.current = true;
       }
     },
     () => {
       if (elapsedRef.current >= 25) {
-        // addCoins(10); <-- addCoins should be defined or imported
       }
       elapsedRef.current = 0;
       rewarded15Ref.current = false;

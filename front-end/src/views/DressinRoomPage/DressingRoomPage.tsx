@@ -21,7 +21,7 @@ const hatImages: Record<HatOption, string | null> = {
   magic: HatMagic,
 };
 
-// Niveau du joueur (voir pour le lier avec les levels du user)
+//voir pour le lier avec les levels du user et pas de brut
 const playerLevel = 20;
 
 const isHatUnlocked = (hat: HatOption, level: number) => {
