@@ -30,7 +30,7 @@ Certaines fonctionnalités peuvent être incomplètes ou sujettes aux modificati
 
 ```bash
 # 1. Clone le projet
-git clone https://github.com/PoAnastasija/Strives.git
+git clone git@github.com:PoAnastasija/Strives.git
 cd strives
 
 # 2. Installe les dépendances
