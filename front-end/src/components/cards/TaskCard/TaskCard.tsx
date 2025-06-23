@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardContent,
-  Checkbox,
-  FormControlLabel,
-  IconButton,
-  useTheme,
-} from '@mui/material';
+import { Card, CardContent, Checkbox, FormControlLabel, IconButton, useTheme } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Task } from '@features/tasks/taskSlice';
 
@@ -22,7 +15,7 @@ export const TaskCard = ({ task, onToggle, onDelete }: TaskCardProps) => {
   return (
     <Card
       sx={{
-        backgroundColor: isDark ? '#28206f' : '#ffffff',
+        backgroundColor: isDark ? '#28206f' : '#8583EB',
         borderRadius: '20px',
         boxShadow: isDark
           ? '0 0 4px rgba(255,255,255,0.05)'
@@ -44,7 +37,7 @@ export const TaskCard = ({ task, onToggle, onDelete }: TaskCardProps) => {
               checked={task.done}
               onChange={() => onToggle(task.id)}
               sx={{
-                color: isDark ? '#90CAF9' : undefined,
+                color: isDark ? '#90CAF9' : '#90caf9',
               }}
             />
           }
@@ -60,7 +53,7 @@ export const TaskCard = ({ task, onToggle, onDelete }: TaskCardProps) => {
           size="small"
           aria-label="Delete"
           sx={{
-            color: isDark ? '#90CAF9' : '#333',
+            color: isDark ? '#90CAF9' : '#90caf9',
           }}
         >
           <DeleteIcon fontSize="small" />

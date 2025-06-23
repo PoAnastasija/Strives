@@ -13,7 +13,7 @@ export const StatCard = ({ title, value }: Props) => {
     const t = title.toLowerCase();
     if (t === 'levels') return mode === 'dark' ? '#423C83' : '#FFE2B8';
     if (t === 'coins') return mode === 'dark' ? '#3f2180' : '#6ED1D1';
-    return mode === 'dark' ? '#1E2A3A' : '#ffffff';
+    return mode === 'dark' ? '#1E2A3A' : '#8583EB';
   };
 
   return (

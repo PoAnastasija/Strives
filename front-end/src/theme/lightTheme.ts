@@ -5,7 +5,7 @@ export const lightTheme = createTheme({
     mode: 'light',
     primary: { main: '#7b61ff' },
     secondary: { main: '#ffcd29' },
-    background: { default: '#fcfbfe', paper: '#ffffff' },
+    background: { default: '#fcfbfe', paper: '#e5e5ff' },
     text: { primary: '#1a1a1a', secondary: '#666' },
   },
   typography: { fontFamily: 'Inter, Roboto, sans-serif' },

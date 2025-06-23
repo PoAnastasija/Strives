@@ -14,7 +14,7 @@ const ThemeCSSVariables = () => {
 
     root.style.setProperty('--bg-dashboard', `url(${background})`);
     root.style.setProperty('--background-default', isDark ? '#121212' : '#f7f6fc');
-    root.style.setProperty('--background-paper', isDark ? '#332b76' : '#ffffff');
+    root.style.setProperty('--background-paper', isDark ? '#332b76' : '#8583eb');
     root.style.setProperty('--text-primary', isDark ? '#ffffff' : '#31265a');
     root.style.setProperty('--text-secondary', isDark ? '#aaaaaa' : '#444444');
   }, [theme]);

@@ -49,7 +49,7 @@ export default function QuestDashboard() {
       progress: 0.0,
       xp: 100,
       coins: 50,
-      color: '#ab8bff',
+      color: '#dfc2f2',
     },
   ];
 
@@ -120,7 +120,7 @@ export default function QuestDashboard() {
                   p: 3,
                   borderRadius: 4,
                   minWidth: 493,
-                  backgroundColor: theme.palette.mode === 'dark' ? '#1b164a' : '#ffffff',
+                  backgroundColor: theme.palette.mode === 'dark' ? '#1b164a' : '#8583EB',
                   color: theme.palette.text.primary,
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                   '&:hover': {
@@ -133,7 +133,7 @@ export default function QuestDashboard() {
                   <span style={{ fontSize: '2rem' }}>{q.icon}</span>
                   <Box>
                     <h3 style={{ fontWeight: 'bold', margin: 0 }}>{q.title}</h3>
-                    <p style={{ marginTop: 4, color: '#888', fontSize: '0.9rem' }}>
+                    <p style={{ marginTop: 4, color: '#fff', fontSize: '0.9rem' }}>
                       {q.description}
                     </p>
                   </Box>

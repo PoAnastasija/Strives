@@ -1,7 +1,7 @@
 .kanbanContainer {
   flex: 1 1 600px;
   min-width: 0;
-  background-color: var(--background-paper, #ffffff);
+  background-color: var(--background-paper, #8583EB);
   color: var(--text-primary, #413A80);
   padding: 1rem;
   border-radius: 12px;
@@ -12,7 +12,7 @@
   flex: 1 1 300px;
   min-width: 280px;
   max-width: 400px;
-  background-color: var(--background-paper, #ffffff);
+  background-color: var(--background-paper, #8583EB);
   color: var(--text-primary, #413A80);
   padding: 1rem;
   border-radius: 12px;
