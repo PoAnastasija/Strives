@@ -295,8 +295,8 @@ export default function FocusPage() {
       <Box
         sx={{
           position: 'fixed',
-          bottom: 20,
-          right: 20,
+          bottom: 500,
+          right: 70,
           display: 'flex',
           flexDirection: 'column',
           gap: 2,
