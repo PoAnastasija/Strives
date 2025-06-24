@@ -1,7 +1,7 @@
 import { DndContext, closestCenter, DragEndEvent, PointerSensor, useSensor, useSensors, useDroppable } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 import ProjectCard from '@components/cards/ProjectCard/ProjectCard';
 import { Project } from '@hooks/useProject';
 
@@ -99,20 +99,18 @@ function DroppableColumn({
     >
       <Box display="flex" alignItems="center" gap={1} mb={2}>
         <Box sx={{ width: 12, height: 12, borderRadius: '50%', backgroundColor: color }} />
-        <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1rem', flex: 1 }}>{label}</Typography>
-        <Typography
-          variant="caption"
-          sx={{
+        <h3 style={{ fontWeight: 600, fontSize: '1rem', flex: 1, margin: 0 }}>{label}</h3>
+        <span
+          style={{
             backgroundColor: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)',
             borderRadius: '12px',
-            px: 1,
-            py: 0.5,
+            padding: '2px 8px',
             fontSize: '0.75rem',
             fontWeight: 500,
           }}
         >
           {projects.length}
-        </Typography>
+        </span>
       </Box>
 
       <SortableContext items={projects.map(p => p.id)} strategy={verticalListSortingStrategy}>
