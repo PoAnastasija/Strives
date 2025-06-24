@@ -13,7 +13,6 @@ import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 import { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
 import { useWindowSize } from 'react-use';
-import { useTheme } from '@mui/material/styles';
 
 const quests = [
   {
@@ -52,8 +51,7 @@ const quests = [
   }
 ];
 
-const theme = useTheme();
-const isLightMode = theme.palette.mode === 'light';
+
 
 function isNewDay(lastDate: string | null) {
   if (!lastDate) return true;
@@ -188,7 +186,7 @@ export default function QuestDetailsPage() {
               </Box>
               <Stack spacing={2}>
                 {quest.tasks.map((task, i) => (
-                  <Paper key={i} sx={{ p: 2, cursor: 'pointer', border: taskChecks[i] ? `2px solid ${quest.color}` : '2px solid transparent', bgcolor: isLightMode ? '#8583eb' : '#332b76', transition: 'all 0.2s ease', '&:hover': { bgcolor: taskChecks[i] ? `${quest.color}25` : 'action.hover' } }} onClick={() => handleTaskToggle(i)}>
+                  <Paper key={i} sx={{ p: 2, cursor: 'pointer', border: taskChecks[i] ? `2px solid ${quest.color}` : '2px solid transparent', bgcolor: '#8583eb', transition: 'all 0.2s ease', '&:hover': { bgcolor: taskChecks[i] ? `${quest.color}25` : 'action.hover' } }} onClick={() => handleTaskToggle(i)}>
                     <Box display="flex" alignItems="center" gap={2}>
                       <Checkbox checked={taskChecks[i]} onChange={() => handleTaskToggle(i)} sx={{ color: quest.color, '&.Mui-checked': { color: quest.color } }} />
                       <p style={{ textDecoration: taskChecks[i] ? 'line-through' : 'none', color: taskChecks[i] ? 'gray' : 'inherit' }}>{task}</p>
