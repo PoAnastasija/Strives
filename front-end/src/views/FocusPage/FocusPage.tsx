@@ -207,13 +207,7 @@ export default function FocusPage() {
               '& .MuiSvgIcon-root': {
                 color: theme.palette.mode === 'dark' ? '#fff' : '#000',
               },
-              boxShadow: theme.palette.mode === 'dark'
-                ? '0 4px 12px rgba(0, 0, 0, 0.6)'
-                : '0 4px 12px rgba(0, 0, 0, 0.15)',
               borderRadius: 2,
-              '& .MuiOutlinedInput-notchedOutline': {
-                border: 'none',
-              },
               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
             }}
           >
