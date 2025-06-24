@@ -225,7 +225,6 @@ export default function FocusPage() {
             <MenuItem value="none">Sound: None</MenuItem>
             <MenuItem value="rain">Sound: Rain</MenuItem>
           </Select>
-        {/* </Box> */}
       </Box>
 
       {bgOption === 'rain' && (

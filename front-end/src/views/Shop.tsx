@@ -27,7 +27,6 @@ export default function Shop() {
   return (
     <PageLayout>
       <Fade in={true} timeout={800}>
-        {/* ✅ Bloc titre modifié pour correspondre à "Your Quests" */}
         <Box mb={4} textAlign="center">
           <h1 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Reward Shop</h1>
           <p style={{ maxWidth: 500, margin: '0 auto' }}>
