@@ -164,26 +164,15 @@ export default function FocusPage() {
           <source src={RainVideo} type="video/mp4" />
         </video>
       )}
-
-      <Box 
-        textAlign="center"
-      >
-        <h1 style={{ 
-          fontWeight: 'bold', 
-          fontSize: '2.5rem',
-
-        }}>
-          Focus Mode
-        </h1>
-        <p style={{ 
-          maxWidth: 500, 
-          margin: '0 auto',
-          fontSize: '1.0rem',
-          color: theme.palette.mode === 'dark' ? '#fff' : '#000',
-          opacity: 0.9
-        }}>
-          Complete a task, focus on your timer, and earn coins.
-        </p>
+      
+      <Fade in={true} timeout={800}>
+        <Box mb={4} textAlign="center">
+          <h1 style={{ fontWeight: 'bold', marginBottom: '0.5rem' }}>Focus Mode</h1>
+          <p style={{ maxWidth: 500, margin: '0 auto' }}>
+            Complete a task, focus on your timer, and earn coins.
+          </p>
+        </Box>
+      </Fade>
 
         <Box 
           mt={3} 
@@ -236,7 +225,7 @@ export default function FocusPage() {
             <MenuItem value="none">Sound: None</MenuItem>
             <MenuItem value="rain">Sound: Rain</MenuItem>
           </Select>
-        </Box>
+        {/* </Box> */}
       </Box>
 
       {bgOption === 'rain' && (
