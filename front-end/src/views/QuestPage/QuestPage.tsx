@@ -23,9 +23,9 @@ export default function QuestDashboard() {
   const quests: Quest[] = [
     {
       id: '1',
-      icon: '🧘',
-      title: '7-Day Meditation Challenge',
-      description: 'Meditate for 10 minutes each day for 7 days.',
+      icon: '📖',
+      title: '60 days to learn a new language',
+      description: 'Study every-day until you learn all the basics!',
       progress: 0.0,
       xp: 70,
       coins: 30,
@@ -33,9 +33,9 @@ export default function QuestDashboard() {
     },
     {
       id: '2',
-      icon: '📖',
-      title: 'Read every-day for 14 days',
-      description: 'Read for 30 min a day, until it become a habit.',
+      icon: '📵',
+      title: 'Digital detox',
+      description: '7 days without any social media',
       progress: 0.0,
       xp: 40,
       coins: 10,
