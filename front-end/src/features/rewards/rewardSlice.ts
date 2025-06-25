@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { RewardStore } from '@types/reward';
+import { RewardStore } from '@type/reward';
 
 
 export const useRewardStore = create<RewardStore>((set) => ({

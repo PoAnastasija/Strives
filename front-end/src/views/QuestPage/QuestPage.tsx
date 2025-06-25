@@ -1,12 +1,15 @@
-import { Box, Button, Grid, LinearProgress, ToggleButtonGroup, ToggleButton, Paper, Grow, Fade } from '@mui/material';
+import { Box, Grid, LinearProgress, ToggleButtonGroup, ToggleButton, Paper, Grow, Fade } from '@mui/material';
 import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 import { useNavigate } from 'react-router-dom';
+import { MenuBook, NoCell } from '@mui/icons-material';
+import type { ReactNode } from 'react';
+import AppButton from '@components/Buttons/AppButton';
 
 type Quest = {
   id: string;
-  icon: string;
+  icon: ReactNode;
   title: string;
   description: string;
   progress: number;
@@ -23,7 +26,7 @@ export default function QuestDashboard() {
   const quests: Quest[] = [
     {
       id: '1',
-      icon: '📖',
+      icon: <MenuBook fontSize="large" sx={{ color: '#fff' }} />,
       title: '60 days to learn a new language',
       description: 'Study every-day until you learn all the basics!',
       progress: 0.0,
@@ -33,7 +36,7 @@ export default function QuestDashboard() {
     },
     {
       id: '2',
-      icon: '📵',
+      icon: <NoCell fontSize="large" sx={{ color: '#fff' }} />,
       title: 'Digital detox',
       description: '7 days without any social media',
       progress: 0.0,
@@ -43,7 +46,7 @@ export default function QuestDashboard() {
     },
     {
       id: '3',
-      icon: '🎯',
+      icon: <MenuBook fontSize="large" sx={{ color: '#fff' }} />,
       title: '21-Day Focus Reset',
       description: 'Focus 3h a day for 21 days.',
       progress: 0.0,
@@ -165,28 +168,9 @@ export default function QuestDashboard() {
                     <span style={{ color: q.color }}>🪙 +{q.coins}</span>
                   </Box>
                   <Box flexGrow={1} />
-                  <Button
-                    variant="contained"
-                    onClick={() => navigate(`/quests/${q.id}`)}
-                    sx={{
-                      borderRadius: 25,
-                      fontWeight: 'bold',
-                      fontSize: '1rem',
-                      px: 3,
-                      py: 0.5,
-                      background: 'linear-gradient(45deg, rgb(139, 107, 255), rgb(36, 164, 238))',
-                      boxShadow: '0 8px 25px rgba(134, 107, 255, 0.4)',
-                      textTransform: 'none',
-                      '&:hover': {
-                        background: 'linear-gradient(45deg, rgb(36, 164, 238), rgb(139, 107, 255))',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 12px 35px rgba(134, 107, 255, 0.4)',
-                      },
-                      transition: 'all 0.3s ease',
-                    }}
-                  >
+                  <AppButton onClick={() => navigate(`/quests/${q.id}`)} colorHex={q.color}>
                     Start
-                  </Button>
+                  </AppButton>
                 </Box>
               </Paper>
             </Grid>
@@ -196,4 +180,3 @@ export default function QuestDashboard() {
     </PageLayout>
   );
 }
- 

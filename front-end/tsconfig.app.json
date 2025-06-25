@@ -22,7 +22,7 @@
       "@components/*": ["components/*"],
       "@features/*": ["features/*"],
       "@assets/*": ["public/assets/*"],
-      "@types/*": ["types/*"],
+      "@type/*": ["types/*"],
       "@hooks/*": ["hooks/*"],
       "@views/*": ["views/*"],
       "@theme/*": ["theme/*"],

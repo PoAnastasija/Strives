@@ -1,15 +1,15 @@
-import { Box, Button, Dialog, DialogTitle, DialogContent, Grid, Tabs, Tab, Paper,
+import { Box, Button, Dialog, DialogTitle, Grid, DialogContent, Tabs, Tab, Paper,
   TextField, MenuItem } from '@mui/material';
 import { useState } from 'react';
 import { useTaskStore } from '@features/tasks/taskSlice';
 import styles from './SuggestedTasksModal.module.css';
-import { Category, CATEGORY_LABELS, SuggestedTasksModalProps } from '@types/category';
+import { Category, CATEGORY_LABELS, SuggestedTasksModalProps } from '@type/category';
 
 const suggestions: Record<Category, string[]> = {
-  movement: ['🤸 Take a stretch break', '🚶 Go for a 15 min walk', '🏃 Run for 15 min', '🧘 Meditate for 10 min'],
-  work: ['⏳ Do 45 min of deep work', '🧹 Clean for 15 min', '⭐ Start with the most important task'],
-  nutrition: ['🚰 Drink 2L of water', '🍏 Eat a fruit', '🍩 Don’t eat processed sugar',
-    '🍵 Drink tea', '📴 Eat without distractions'],
+  movement: ['Take a stretch break', 'Go for a 15 min walk', 'Run for 15 min', 'Meditate for 10 min'],
+  work: ['Do 45 min of deep work', 'Clean for 15 min', 'Start with the most important task'],
+  nutrition: ['Drink 2L of water', 'Eat a fruit', 'Don’t eat processed sugar',
+    'Drink tea', ' Eat without distractions'],
 };
 
 export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps) => {
@@ -50,7 +50,7 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
           {Object.entries(CATEGORY_LABELS).map(([key, label]) => (
             <Tab key={key} label={label} value={key} />
           ))}
-          <Tab label="🛠️ Custom" value="custom" />
+          <Tab label="Custom" value="custom" />
         </Tabs>
 
         <Box mt={2}>
@@ -90,11 +90,9 @@ export const SuggestedTasksModal = ({ open, onClose }: SuggestedTasksModalProps)
           ) : (
             <Grid container spacing={2}>
               {suggestions[category as Category].map((task) => (
-                <Grid item xs={12} sm={6} key={task}>
                   <Paper className={styles.suggestionCard} onClick={() => handleAdd(task)}>
                     <p className={styles.taskText}>{task}</p>
                   </Paper>
-                </Grid>
               ))}
             </Grid>
           )}

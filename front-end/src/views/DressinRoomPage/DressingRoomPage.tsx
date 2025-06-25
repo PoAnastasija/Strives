@@ -1,13 +1,11 @@
-import { Box, Button, Grid, Paper, Tooltip } from '@mui/material';
+import { Box, Grid, Button, Paper, Tooltip } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import BlobBase from '@assets/blob.png';
 import HatBlack from '@assets/hats/black_hat.png';
 import HatBlue from '@assets/hats/blue_hat.png';
 import HatBrown from '@assets/hats/brown_hat.png';
 import HatMagic from '@assets/hats/magic_hat.png';
-
 import { useCompanionHatStore } from '@features/companion/hatStore';
 import styles from './DressingRoom.module.css';
 
@@ -90,7 +88,7 @@ export default function DressingRoomPage() {
               : '';
 
           return (
-            <Grid item key={option}>
+            <Grid item xs="auto" key={option}>
               <Tooltip title={tooltip}>
                 <Paper
                   elevation={selectedHat === option ? 6 : 1}

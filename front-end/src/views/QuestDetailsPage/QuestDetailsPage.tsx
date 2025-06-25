@@ -13,11 +13,12 @@ import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 import { useEffect, useState } from 'react';
 import Confetti from 'react-confetti';
 import { useWindowSize } from 'react-use';
+import {MenuBook, NoCell } from '@mui/icons-material';
 
 const quests = [
   {
     id: '1',
-    icon: '📖',
+    icon: <MenuBook fontSize="large" sx={{ color: '#fff' }} />,
     title: '60 days to learn a language',
     description: 'Study every-day until you learn all the basics !',
     xp: 500,
@@ -36,7 +37,7 @@ const quests = [
 
     {
     id: '2',
-    icon: '📵',
+    icon: <NoCell fontSize="large" sx={{ color: '#fff' }} />,
     title: 'Digital detox',
     description: '7 days without any social media',
     xp: 70,

@@ -1,13 +1,14 @@
-import { Box, Grid, Button, Chip, Fade, Grow } from '@mui/material';
+import { Box, Grid, Chip, Fade, Grow } from '@mui/material';
 import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 import { RewardCard } from '@components/cards/RewardCard/RewardCard';
 import { useRewardStore } from '@features/rewards/rewardSlice';
 import { useState } from 'react';
 import { AddRewardModal } from '@features/rewards/AddRewardModal';
 import { useTaskStore } from '@features/tasks/taskSlice';
-import { Reward } from '@types/reward';
+import { Reward } from '@type/reward';
 import { useTheme } from '@mui/material/styles';
 import { Add, AttachMoney } from '@mui/icons-material';
+import AppButton from '@components/Buttons/AppButton';
 
 export default function Shop() {
   const { rewards } = useRewardStore();
@@ -59,60 +60,42 @@ export default function Shop() {
             />
           </Box>
 
-          <Button 
-            variant="contained" 
+          <AppButton 
             onClick={() => setOpen(true)}
             startIcon={<Add />}
-            sx={{
-              borderRadius: 25,
-              fontWeight: 'bold',
-              fontSize: '1rem',
-              px: 4,
-              py: 1.5,
-              background: 'linear-gradient(45deg,rgb(139, 107, 255),rgb(36, 164, 238))',
-              boxShadow: '0 8px 25px rgba(134, 107, 255, 0.4)',
-              textTransform: 'none',
-              '&:hover': {
-                background: 'linear-gradient(45deg,rgb(36, 164, 238),rgb(139, 107, 255))',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 12px 35px rgba(134, 107, 255, 0.4)',
-              },
-              transition: 'all 0.3s ease',
-            }}
           >
             Add New Reward
-          </Button>
+          </AppButton>
         </Box>
       </Grow>
 
       <Grid container spacing={3} mt={1}>
         {rewards.map((reward, index) => (
           <Grow in={true} timeout={800 + index * 100} key={reward.id}>
-            <Grid item xs={12} sm={6} md={4}>
-              <Box
-                sx={{
-                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-8px) scale(1.02)',
-                    '& .reward-card': {
-                      boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-                    }
+            <Box
+              sx={{
+                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                '&:hover': {
+                  transform: 'translateY(-8px) scale(1.02)',
+                  '& .reward-card': {
+                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
                   }
-                }}
-              >
-                <RewardCard
-                  className="reward-card"
-                  title={reward.title}
-                  cost={reward.cost}
-                  link={reward.link}
-                  onClaim={() => handleClaimReward(reward)}
-                  disabled={gold < reward.cost}
-                />
-              </Box>
-            </Grid>
+                }
+              }}
+            >
+              <RewardCard
+                className="reward-card"
+                title={reward.title}
+                cost={reward.cost}
+                link={reward.link}
+                onClaim={() => handleClaimReward(reward)}
+                disabled={gold < reward.cost}
+              />
+            </Box>
           </Grow>
         ))}
       </Grid>
+      
       <AddRewardModal open={open} onClose={() => setOpen(false)} />
     </PageLayout>
   );

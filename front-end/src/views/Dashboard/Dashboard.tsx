@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, Grid, Fade, Grow } from '@mui/material';
+import { Box, Grid, Fade, Grow } from '@mui/material';
 import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 import { CompanionCard } from '@components/cards/CompanionCard/CompanionCard';
 import { StatCard } from '@components/cards/StatCard/StatCard';
@@ -10,6 +10,7 @@ import { useTaskStore } from '@features/tasks/taskSlice';
 import { useUserXp } from '@hooks/useUserXp';
 import { Add } from '@mui/icons-material';
 import styles from './Dashboard.module.css';
+import AppButton from '@components/Buttons/AppButton';
 
 export default function Dashboard() {
   const { gold } = useTaskStore();
@@ -36,29 +37,9 @@ export default function Dashboard() {
             <Grid item xs={12} md={7}>
               <Box className={styles.columnLayout}>
                 <TaskList />
-                <Button
-                  variant="contained"
-                  onClick={() => setOpenModal(true)}
-                  startIcon={<Add />}
-                  sx={{
-                    borderRadius: 25,
-                    fontWeight: 'bold',
-                    fontSize: '1rem',
-                    px: 4,
-                    py: 1.5,
-                    background: 'linear-gradient(45deg,rgb(139, 107, 255),rgb(36, 164, 238))',
-                    boxShadow: '0 8px 25px rgba(134, 107, 255, 0.4)',
-                    textTransform: 'none',
-                    '&:hover': {
-                      background: 'linear-gradient(45deg,rgb(36, 164, 238),rgb(139, 107, 255))',
-                      transform: 'translateY(-2px)',
-                      boxShadow: '0 12px 35px rgba(134, 107, 255, 0.4)',
-                    },
-                    transition: 'all 0.3s ease',
-                  }}
-                >
+                <AppButton onClick={() => setOpenModal(true)} startIcon={<Add />}>
                   Add a task
-                </Button>
+                </AppButton>
               </Box>
             </Grid>
           </Grow>

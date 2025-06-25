@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogTitle, DialogContent, TextField, MenuItem, DialogActions } from '@mui/material';
   import { useState } from 'react';
   import { useTaskStore } from './taskSlice';
-  import { TaskType } from '@types/category';
+  import { TaskType } from '@type/category';
   
   export const AddTaskModal = () => {
     const [open, setOpen] = useState<boolean>(false);
