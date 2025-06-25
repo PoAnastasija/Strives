@@ -5,7 +5,7 @@ import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 import { useNavigate } from 'react-router-dom';
 import { MenuBook, NoCell } from '@mui/icons-material';
 import type { ReactNode } from 'react';
-import AppButton from '@components/Buttons/AppButton';
+import AppButton from '@components/buttons/AppButton';
 
 type Quest = {
   id: string;

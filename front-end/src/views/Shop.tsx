@@ -8,7 +8,7 @@ import { useTaskStore } from '@features/tasks/taskSlice';
 import { Reward } from '@type/reward';
 import { useTheme } from '@mui/material/styles';
 import { Add, AttachMoney } from '@mui/icons-material';
-import AppButton from '@components/Buttons/AppButton';
+import AppButton from '@components/buttons/AppButton';
 
 export default function Shop() {
   const { rewards } = useRewardStore();

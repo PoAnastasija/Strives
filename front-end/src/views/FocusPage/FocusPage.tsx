@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  Box, TextField, Button, IconButton, List, ListItem, MenuItem, Select, Fade, Grow
-} from '@mui/material';
-import { Pause, PlayArrow, Delete, Visibility, VisibilityOff } from '@mui/icons-material';
+import { Box,  MenuItem, Select, Fade } from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
 import { PageLayout } from '@components/layout/PageLayout/PageLayout';
 import { useTimer } from '@hooks/useTimer';
 import { useTodoList } from '@hooks/useTodoList';
 import RainSound from '@assets/sounds/rain.mp3';
 import RainVideo from '@assets/videos/rain_video.mp4';
+import { TimerCard } from '@components/cards/TimerCard';
+import { TodoListCard } from '@components/cards/TodoListCard';
+import { ToggleButton } from '@components/buttons/ToogleButton';
 
 export default function FocusPage() {
   const theme = useTheme();
@@ -273,7 +274,7 @@ export default function FocusPage() {
           </Box>
         </Fade>
       )}
-
+      
       <Box
         sx={{
           position: 'fixed',
@@ -285,56 +286,24 @@ export default function FocusPage() {
           zIndex: 50,
         }}
       >
-        <Grow in={true} timeout={500}>
-          <Button 
-            variant="contained" 
-            onClick={() => setShowTimer(prev => !prev)} 
-            sx={{ 
-              width: 160,
-              height: 50,
-              borderRadius: 25,
-              background: 'linear-gradient(45deg, #667eea,rgb(158, 85, 230))',
-              boxShadow: '0 8px 25px rgba(102, 126, 234, 0.4)',
-              fontSize: '1rem',
-              fontWeight: 'bold',
-              textTransform: 'none',
-              '&:hover': {
-                background: 'linear-gradient(45deg, #5a6fd8, #6a42a0)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 12px 35px rgba(102, 126, 234, 0.6)',
-              },
-              transition: 'all 0.3s ease',
-            }}
-            startIcon={showTimer ? <VisibilityOff /> : <Visibility />}
-          >
-            {showTimer ? 'Hide Timer' : 'Show Timer'}
-          </Button>
-        </Grow>
-        <Grow in={true} timeout={700}>
-          <Button 
-            variant="contained" 
-            onClick={() => setShowTodo(prev => !prev)} 
-            sx={{ 
-              width: 160,
-              height: 50,
-              borderRadius: 25,
-              background: 'linear-gradient(45deg, #74b9ff, #0984e3)',
-              boxShadow: '0 8px 25px rgba(116, 185, 255, 0.4)',
-              fontSize: '1rem',
-              fontWeight: 'bold',
-              textTransform: 'none',
-              '&:hover': {
-                background: 'linear-gradient(45deg, #5aa3f0, #0770c4)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 12px 35px rgba(116, 185, 255, 0.6)',
-              },
-              transition: 'all 0.3s ease',
-            }}
-            startIcon={showTodo ? <VisibilityOff /> : <Visibility />}
-          >
-            {showTodo ? 'Hide To-Do' : 'Show To-Do'}
-          </Button>
-        </Grow>
+        <ToggleButton
+          show={showTimer}
+          onClick={() => setShowTimer(prev => !prev)}
+          labelShow="Show Timer"
+          labelHide="Hide Timer"
+          iconShow={<Visibility />}
+          iconHide={<VisibilityOff />}
+          delay={500}
+        />
+        <ToggleButton
+          show={showTodo}
+          onClick={() => setShowTodo(prev => !prev)}
+          labelShow="Show To-Do"
+          labelHide="Hide To-Do"
+          iconShow={<Visibility />}
+          iconHide={<VisibilityOff />}
+          delay={700}
+        />
       </Box>
 
       {showTimer && (
@@ -350,76 +319,14 @@ export default function FocusPage() {
               p: 3,
               borderRadius: 4,
               cursor: isDragging && draggedPopup === 'timer' ? 'grabbing' : 'grab',
-              zIndex: 999,
-              background: theme.palette.mode === 'dark' 
-                ? 'rgba(27, 22, 74, 0.95)' 
-                : 'rgba(255, 255, 255, 0.95)',
-              backdropFilter: 'blur(15px)',
-              boxShadow: theme.palette.mode === 'dark'
-                ? '0 20px 60px rgba(0, 0, 0, 0.6)'
-                : '0 20px 60px rgba(0, 0, 0, 0.3)',
-              border: theme.palette.mode === 'dark'
-                ? '1px solid rgba(255, 255, 255, 0.1)'
-                : '1px solid rgba(255, 255, 255, 0.3)',
-              transition: 'transform 0.3s ease',
-              '&:hover': {
-                transform: 'translateY(-5px)',
-                boxShadow: theme.palette.mode === 'dark'
-                  ? '0 25px 70px rgba(0, 0, 0, 0.8)'
-                  : '0 25px 70px rgba(0, 0, 0, 0.4)',
-              }
             }}
           >
-            <h2 style={{ 
-              marginBottom: '1.5rem',
-              textAlign: 'center',
-              background: 'linear-gradient(45deg, #667eea, #764ba2)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontSize: '1.5rem'
-            }}>
-              Focus Timer
-            </h2>
-            <Box sx={{ 
-              fontSize: '3rem', 
-              fontWeight: 'bold', 
-              textAlign: 'center', 
-              mb: 2,
-              color: theme.palette.mode === 'dark' ? '#fff' : '#333',
-              fontFamily: 'monospace',
-              background: 'linear-gradient(45deg, #667eea, #764ba2)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}>
-              {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
-            </Box>
-            <Box display="flex" justifyContent="center" mb={2}>
-              <Button
-                variant="contained"
-                onClick={isRunning ? pause : start}
-                startIcon={isRunning ? <Pause /> : <PlayArrow />}
-                sx={{
-                  px: 6,
-                  py: 1.5,
-                  borderRadius: '50px',
-                  fontWeight: 'bold',
-                  fontSize: '1.1rem',
-                  background: isRunning 
-                    ? 'linear-gradient(45deg, #ff7675, #d63031)'
-                    : 'linear-gradient(45deg, #00b894, #00a085)',
-                  color: '#fff',
-                  textTransform: 'none',
-                  boxShadow: '0 8px 25px rgba(0, 0, 0, 0.2)',
-                  '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: '0 12px 35px rgba(0, 0, 0, 0.3)',
-                  },
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                {isRunning ? 'Pause' : 'Start Focus'}
-              </Button>
-            </Box>
+            <TimerCard
+              minutes={minutes}
+              seconds={seconds}
+              isRunning={isRunning}
+              onToggle={isRunning ? pause : start}
+            />
           </Box>
         </Fade>
       )}
@@ -438,108 +345,15 @@ export default function FocusPage() {
               borderRadius: 4,
               cursor: isDragging && draggedPopup === 'todo' ? 'grabbing' : 'grab',
               zIndex: 998,
-              background: theme.palette.mode === 'dark' 
-                ? 'rgba(27, 22, 74, 0.95)' 
-                : 'rgba(255, 255, 255, 0.95)',
-              backdropFilter: 'blur(15px)',
-              boxShadow: theme.palette.mode === 'dark'
-                ? '0 20px 60px rgba(0, 0, 0, 0.6)'
-                : '0 20px 60px rgba(0, 0, 0, 0.3)',
-              border: theme.palette.mode === 'dark'
-                ? '1px solid rgba(255, 255, 255, 0.1)'
-                : '1px solid rgba(255, 255, 255, 0.3)',
-              transition: 'transform 0.3s ease',
-              '&:hover': {
-                transform: 'translateY(-5px)',
-                boxShadow: theme.palette.mode === 'dark'
-                  ? '0 25px 70px rgba(0, 0, 0, 0.8)'
-                  : '0 25px 70px rgba(0, 0, 0, 0.4)',
-              }
             }}
           >
-            <h2 style={{ 
-              marginBottom: '1.5rem',
-              textAlign: 'center',
-              background: 'linear-gradient(45deg, #74b9ff, #0984e3)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontSize: '1.5rem'
-            }}>
-              To-Do List
-            </h2>
-            <List sx={{ maxHeight: 200, overflow: 'auto' }}>
-              {todos.map((task, index) => (
-                <ListItem
-                  key={index}
-                  sx={{
-                    backgroundColor: theme.palette.mode === 'dark'
-                      ? 'rgba(116, 185, 255, 0.2)'
-                      : 'rgba(116, 185, 255, 0.1)',
-                    borderRadius: 2,
-                    mb: 1,
-                    border: theme.palette.mode === 'dark'
-                      ? '1px solid rgba(116, 185, 255, 0.3)'
-                      : '1px solid rgba(116, 185, 255, 0.2)',
-                    color: theme.palette.mode === 'dark' ? '#fff' : 'inherit',
-                  }}
-                  secondaryAction={
-                    <IconButton 
-                      onClick={() => handleDeleteTodo(index)} 
-                      color="error"
-                      sx={{
-                        '&:hover': {
-                          backgroundColor: 'rgba(255, 99, 99, 0.1)',
-                        }
-                      }}
-                    >
-                      <Delete />
-                    </IconButton>
-                  }
-                >
-                  {task}
-                </ListItem>
-              ))}
-            </List>
-            <Box display="flex" gap={1} mt={2}>
-              <TextField
-                variant="outlined"
-                label="New Task"
-                placeholder="What do you need to focus on?"
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-                fullWidth
-                size="small"
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    borderRadius: 2,
-                    backgroundColor: theme.palette.mode === 'dark'
-                      ? 'rgba(255, 255, 255, 0.1)'
-                      : 'rgba(255, 255, 255, 0.8)',
-                    color: theme.palette.mode === 'dark' ? '#fff' : 'inherit',
-                  },
-                  '& .MuiInputLabel-root': {
-                    color: theme.palette.mode === 'dark' ? '#fff' : 'inherit',
-                  },
-                  '& .MuiOutlinedInput-input::placeholder': {
-                    color: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.7)' : 'inherit',
-                  }
-                }}
-              />
-              <Button 
-                onClick={handleAddTodo} 
-                variant="contained"
-                sx={{
-                  borderRadius: 2,
-                  background: 'linear-gradient(45deg, #74b9ff, #0984e3)',
-                  px: 3,
-                  '&:hover': {
-                    background: 'linear-gradient(45deg, #5aa3f0, #0770c4)',
-                  }
-                }}
-              >
-                Add
-              </Button>
-            </Box>
+            <TodoListCard
+              todos={todos}
+              newTask={newTask}
+              setNewTask={setNewTask}
+              onAdd={handleAddTodo}
+              onDelete={handleDeleteTodo}
+            />
           </Box>
         </Fade>
       )}

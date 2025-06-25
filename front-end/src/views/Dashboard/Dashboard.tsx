@@ -10,7 +10,7 @@ import { useTaskStore } from '@features/tasks/taskSlice';
 import { useUserXp } from '@hooks/useUserXp';
 import { Add } from '@mui/icons-material';
 import styles from './Dashboard.module.css';
-import AppButton from '@components/Buttons/AppButton';
+import AppButton from '@components/buttons/AppButton';
 
 export default function Dashboard() {
   const { gold } = useTaskStore();
